@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useModal } from "./useModal";
 import { AllData, Scenario, entry } from "./data";
 import { euroShort, longDate, perLitre } from "./format";
 
@@ -6,16 +7,16 @@ interface Props { data: AllData; scenario: Scenario; onScenario: (s: Scenario) =
 
 export function Methodology({ data, scenario, onScenario, onClose }: Props) {
   const ref = useRef<HTMLDialogElement>(null);
-  useEffect(() => { if (ref.current && !ref.current.open) ref.current.showModal(); }, []);
+  const { close, onBackdrop } = useModal(ref, onClose);
   const d = data.fuels.petrol.deficit;
   const start = (f: "petrol" | "diesel", s: Scenario) => perLitre(entry(data, f, s, "EU").warStartPrice);
   const sens = data.meta.sensitivity;
   const sum = (k: string) => sens.petrol[k] + sens.diesel[k];
 
   return (
-    <dialog ref={ref} className="panel" onClose={onClose} onClick={(ev) => ev.target === ref.current && onClose()} aria-labelledby="m-title">
+    <dialog ref={ref} className="panel" onClick={onBackdrop} aria-labelledby="m-title">
       <div className="panel-inner prose">
-        <button className="close" onClick={onClose} aria-label="Close">✕</button>
+        <button className="close" onClick={close} aria-label="Close">✕</button>
         <p className="kicker">How this is calculated</p>
         <h2 id="m-title">Methodology</h2>
 
@@ -56,6 +57,9 @@ export function Methodology({ data, scenario, onScenario, onClose }: Props) {
 
         <h3>Country map and rankings</h3>
         <p>Each country is coloured by the chosen measure. <em>Price change</em> is the current price minus the war-start price. <em>Total consumer cost</em> and <em>household cost</em> use the method above.</p>
+
+        <h3>Comparison with the US</h3>
+        <p>The EU vs US tab uses the US figures from Brown University Climate Solutions Lab's <a href="https://iranwarcost.watson.brown.edu/" target="_blank" rel="noreferrer">Iran War Energy Cost Tracker</a>. We download Brown's public price, no-war and demand series and run them through the same calculation code as the EU figures. On Brown's own data, our code reproduces their published US totals to within 0.4%. Both sides are compared over the same period (up to the latest Oil Bulletin). US dollars are converted to euros at the ECB reference rate, and the US household count is Brown's (about 131 million). A household is not a perfect like-for-like unit: Americans own more cars and drive further, which is a large part of the difference the comparison shows.</p>
 
         <h3>Code and data</h3>
         <p>The data pipeline and the site are open source. Every number on this page can be rebuilt from public sources with one command. The data refreshes automatically each week after the Oil Bulletin is published.</p>

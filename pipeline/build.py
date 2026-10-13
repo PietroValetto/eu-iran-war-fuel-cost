@@ -8,6 +8,7 @@ import sys
 
 import fetch_eurostat
 import fetch_wob
+import us_comparison
 from burden import burden
 from common import EU27, FUELS, NAMES, SEASONAL_YEARS, WAR_START, interpolate_daily, write_json
 from counterfactual import seasonal_weekly_change, weekly_path
@@ -33,6 +34,7 @@ def main(cached: bool = False) -> None:
     feb = [d for d in prewar if d.month == 2]
     weights_year = max(wob["consumption"])
     sensitivity = {}
+    eu_final = {}
 
     for fuel in FUELS:
         season = seasonal_weekly_change(wob["wo_tax"]["EU"][fuel])
@@ -111,6 +113,7 @@ def main(cached: bool = False) -> None:
                 ranked = sorted(EU27, key=lambda c: deficit[s]["countries"][c][metric], reverse=True)
                 for i, c in enumerate(ranked, 1):
                     deficit[s]["countries"][c].setdefault("rank", {})[metric] = i
+        eu_final[fuel] = deficit["lastBulletin"]["EU"]
         sensitivity[fuel] = {"lastBulletin": round(totals["lastBulletin"]), "excluding2022Seasonality": round(total_ex22),
                              "euDirectFormula": deficit["lastBulletin"]["euDirect"]["totalExtraCost"]}
 
@@ -127,6 +130,9 @@ def main(cached: bool = False) -> None:
             "daysSinceWar": (end - WAR_START).days + 1,
             "scenarios": {s: {"EU": deficit[s]["EU"], "countries": deficit[s]["countries"]} for s in SCENARIOS},
         })
+
+    eu_lpd = {f: sum(vols["litresPerDay"]["EU"][f].values()) / 12 for f in FUELS}
+    us_comparison.build(end, eu_final, hh["EU"]["households"], eu_lpd)
 
     write_json("monthly-demand.json", {"source": "Eurostat nrg_cb_oilm, gross inland deliveries (GID_OBS): O4652 motor gasoline, "
                                                  "O46711 road diesel; 2021-2025 average litres/day by calendar month",

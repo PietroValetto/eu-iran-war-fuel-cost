@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useModal } from "./useModal";
 import { AllData, FUELS, FUEL_LABEL, FUEL_SUB, Fuel, Scenario, entry } from "./data";
 import { useLive } from "./Headline";
 import { ChartLegend, PriceChart } from "./PriceChart";
@@ -23,15 +24,12 @@ export function CountryPanel({ data, code, fuel, scenario, onFuel, onClose }: Pr
   const live: Record<Fuel, number> = { petrol: lp, diesel: ld };
   const total = lp + ld;
 
-  useEffect(() => {
-    const dlg = ref.current;
-    if (dlg && !dlg.open) dlg.showModal();
-  }, []);
+  const { close, onBackdrop } = useModal(ref, onClose);
 
   return (
-    <dialog ref={ref} className="panel" onClose={onClose} onClick={(ev) => ev.target === ref.current && onClose()} aria-labelledby="panel-title">
+    <dialog ref={ref} className="panel" onClick={onBackdrop} aria-labelledby="panel-title">
       <div className="panel-inner">
-        <button className="close" onClick={onClose} aria-label="Close">✕</button>
+        <button className="close" onClick={close} aria-label="Close">✕</button>
         <p className="kicker">Country breakdown</p>
         <h2 id="panel-title">{area.name}</h2>
 

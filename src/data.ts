@@ -46,8 +46,41 @@ export interface Households {
 export interface Meta { builtAt: string; latestBulletin: string; sensitivity: Record<Fuel, Record<string, number>> }
 export interface Demand { eurostatUpdated: string; gaps: string[] }
 
+export interface UsFuel {
+  totalExtraCostUSD: number;
+  totalSamePeriodUSD: number;
+  warStartPriceUSDPerGallon: number;
+  currentPriceUSDPerGallon: number;
+  pctChange: number;
+  increaseEURPerLitre: number;
+  litresPerHouseholdPerYear: number;
+}
+export interface UsComparison {
+  stale: boolean;
+  brownUrl: string;
+  brownAsOf: string;
+  euAsOf: string;
+  eurPerUsd: number;
+  fxDate: string;
+  us: {
+    households: number;
+    fuels: Record<Fuel, UsFuel>;
+    totalExtraCostUSD: number;
+    totalSamePeriodUSD: number;
+    perHouseholdUSD: number;
+    perHouseholdSamePeriodUSD: number;
+    perHouseholdSamePeriodEUR: number;
+  };
+  eu: {
+    households: number;
+    totalExtraCostEUR: number;
+    perHouseholdEUR: number;
+    fuels: Record<Fuel, { pctChange: number; increaseEURPerLitre: number; litresPerHouseholdPerYear: number }>;
+  };
+}
+
 export interface FuelData { ts: TimeSeries; cf: Counterfactual; current: Current; deficit: Deficit }
-export interface AllData { fuels: Record<Fuel, FuelData>; households: Households; meta: Meta; demand: Demand }
+export interface AllData { fuels: Record<Fuel, FuelData>; households: Households; meta: Meta; demand: Demand; us: UsComparison | null }
 
 const get = <T,>(name: string): Promise<T> =>
   fetch(`${import.meta.env.BASE_URL}data/${name}.json`).then((r) => {
@@ -65,10 +98,11 @@ export async function loadAll(): Promise<AllData> {
     ]);
     return { ts, cf, current, deficit };
   };
-  const [petrol, diesel, households, meta, demand] = await Promise.all([
+  const [petrol, diesel, households, meta, demand, us] = await Promise.all([
     fuel("petrol"), fuel("diesel"), get<Households>("households"), get<Meta>("meta"), get<Demand>("monthly-demand"),
+    get<UsComparison>("us-comparison").catch(() => null), // optional: the EU vs US tab hides if missing
   ]);
-  return { fuels: { petrol, diesel }, households, meta, demand };
+  return { fuels: { petrol, diesel }, households, meta, demand, us };
 }
 
 export const entry = (d: AllData, f: Fuel, s: Scenario, area: string): Entry =>

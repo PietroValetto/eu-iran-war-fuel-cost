@@ -1,0 +1,1021 @@
+{
+ "warStartDate": "2026-02-28",
+ "lastPrewarBulletin": "2026-02-23",
+ "febBulletins": [
+  "2026-02-02",
+  "2026-02-09",
+  "2026-02-16",
+  "2026-02-23"
+ ],
+ "endDate": "2026-10-05",
+ "measuredThrough": "2026-10-06T00:00:00+02:00",
+ "daysSinceWar": 220,
+ "scenarios": {
+  "lastBulletin": {
+   "EU": {
+    "warStartPrice": 1.5944,
+    "currentPrice": 2.1485,
+    "priceIncrease": 0.5541,
+    "pctChange": 34.75,
+    "noWarPriceToday": 1.6408,
+    "litresPerDayThisMonth": 670540775,
+    "totalExtraCost": 52082766493,
+    "perHouseholdCost": 256.35,
+    "dailyRate": 342883810,
+    "households": 203172200,
+    "administeredPrice": false
+   },
+   "countries": {
+    "AT": {
+     "warStartPrice": 1.546,
+     "currentPrice": 2.138,
+     "priceIncrease": 0.592,
+     "pctChange": 38.29,
+     "noWarPriceToday": 1.5899,
+     "litresPerDayThisMonth": 19972582,
+     "totalExtraCost": 1785643534,
+     "perHouseholdCost": 424.09,
+     "dailyRate": 10947519,
+     "households": 4210500,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 7,
+      "perHouseholdCost": 2,
+      "pctChange": 13
+     }
+    },
+    "BE": {
+     "warStartPrice": 1.6272,
+     "currentPrice": 2.3488,
+     "priceIncrease": 0.7216,
+     "pctChange": 44.35,
+     "noWarPriceToday": 1.6713,
+     "litresPerDayThisMonth": 19422219,
+     "totalExtraCost": 1958560206,
+     "perHouseholdCost": 373.54,
+     "dailyRate": 13157515,
+     "households": 5243300,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 6,
+      "perHouseholdCost": 3,
+      "pctChange": 4
+     }
+    },
+    "BG": {
+     "warStartPrice": 1.2276,
+     "currentPrice": 1.8929,
+     "priceIncrease": 0.6653,
+     "pctChange": 54.2,
+     "noWarPriceToday": 1.2683,
+     "litresPerDayThisMonth": 8842507,
+     "totalExtraCost": 810093006,
+     "perHouseholdCost": 284.24,
+     "dailyRate": 5522628,
+     "households": 2850000,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 14,
+      "perHouseholdCost": 11,
+      "pctChange": 1
+     }
+    },
+    "CY": {
+     "warStartPrice": 1.4064,
+     "currentPrice": 2.0299,
+     "priceIncrease": 0.6235,
+     "pctChange": 44.33,
+     "noWarPriceToday": 1.4514,
+     "litresPerDayThisMonth": 1245444,
+     "totalExtraCost": 93889821,
+     "perHouseholdCost": 240.68,
+     "dailyRate": 720473,
+     "households": 390100,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 26,
+      "perHouseholdCost": 14,
+      "pctChange": 5
+     }
+    },
+    "CZ": {
+     "warStartPrice": 1.3625,
+     "currentPrice": 1.9521,
+     "priceIncrease": 0.5896,
+     "pctChange": 43.27,
+     "noWarPriceToday": 1.4049,
+     "litresPerDayThisMonth": 18418419,
+     "totalExtraCost": 1466939761,
+     "perHouseholdCost": 320.36,
+     "dailyRate": 10078337,
+     "households": 4579000,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 9,
+      "perHouseholdCost": 8,
+      "pctChange": 6
+     }
+    },
+    "DE": {
+     "warStartPrice": 1.733,
+     "currentPrice": 2.254,
+     "priceIncrease": 0.521,
+     "pctChange": 30.06,
+     "noWarPriceToday": 1.7811,
+     "litresPerDayThisMonth": 115032627,
+     "totalExtraCost": 9368018931,
+     "perHouseholdCost": 224.85,
+     "dailyRate": 54402339,
+     "households": 41662700,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 2,
+      "perHouseholdCost": 18,
+      "pctChange": 22
+     }
+    },
+    "DK": {
+     "warStartPrice": 1.7803,
+     "currentPrice": 2.4885,
+     "priceIncrease": 0.7082,
+     "pctChange": 39.78,
+     "noWarPriceToday": 1.8326,
+     "litresPerDayThisMonth": 7470677,
+     "totalExtraCost": 733100746,
+     "perHouseholdCost": 233.0,
+     "dailyRate": 4899678,
+     "households": 3146300,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 16,
+      "perHouseholdCost": 17,
+      "pctChange": 10
+     }
+    },
+    "EE": {
+     "warStartPrice": 1.391,
+     "currentPrice": 2.096,
+     "priceIncrease": 0.705,
+     "pctChange": 50.68,
+     "noWarPriceToday": 1.4343,
+     "litresPerDayThisMonth": 2559613,
+     "totalExtraCost": 256307735,
+     "perHouseholdCost": 345.43,
+     "dailyRate": 1693731,
+     "households": 742000,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 25,
+      "perHouseholdCost": 5,
+      "pctChange": 2
+     }
+    },
+    "ES": {
+     "warStartPrice": 1.4232,
+     "currentPrice": 1.9176,
+     "priceIncrease": 0.4945,
+     "pctChange": 34.74,
+     "noWarPriceToday": 1.4705,
+     "litresPerDayThisMonth": 71563701,
+     "totalExtraCost": 4691383422,
+     "perHouseholdCost": 237.7,
+     "dailyRate": 32002213,
+     "households": 19736500,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 4,
+      "perHouseholdCost": 16,
+      "pctChange": 16
+     }
+    },
+    "FI": {
+     "warStartPrice": 1.7379,
+     "currentPrice": 2.5529,
+     "priceIncrease": 0.815,
+     "pctChange": 46.9,
+     "noWarPriceToday": 1.7917,
+     "litresPerDayThisMonth": 7887000,
+     "totalExtraCost": 904129893,
+     "perHouseholdCost": 303.52,
+     "dailyRate": 6003756,
+     "households": 2978800,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 13,
+      "perHouseholdCost": 10,
+      "pctChange": 3
+     }
+    },
+    "FR": {
+     "warStartPrice": 1.6497,
+     "currentPrice": 2.3555,
+     "priceIncrease": 0.7058,
+     "pctChange": 42.78,
+     "noWarPriceToday": 1.6949,
+     "litresPerDayThisMonth": 118027452,
+     "totalExtraCost": 11469624655,
+     "perHouseholdCost": 354.2,
+     "dailyRate": 77972335,
+     "households": 32382000,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 1,
+      "perHouseholdCost": 4,
+      "pctChange": 7
+     }
+    },
+    "GR": {
+     "warStartPrice": 1.548,
+     "currentPrice": 2.166,
+     "priceIncrease": 0.618,
+     "pctChange": 39.92,
+     "noWarPriceToday": 1.5981,
+     "litresPerDayThisMonth": 9330583,
+     "totalExtraCost": 790469868,
+     "perHouseholdCost": 194.92,
+     "dailyRate": 5298956,
+     "households": 4055400,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 15,
+      "perHouseholdCost": 22,
+      "pctChange": 9
+     }
+    },
+    "HR": {
+     "warStartPrice": 1.494,
+     "currentPrice": 1.9839,
+     "priceIncrease": 0.4899,
+     "pctChange": 32.79,
+     "noWarPriceToday": 1.5423,
+     "litresPerDayThisMonth": 7112108,
+     "totalExtraCost": 482828099,
+     "perHouseholdCost": 329.24,
+     "dailyRate": 3140226,
+     "households": 1466500,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 18,
+      "perHouseholdCost": 7,
+      "pctChange": 21
+     }
+    },
+    "HU": {
+     "warStartPrice": 1.5207,
+     "currentPrice": 1.9281,
+     "priceIncrease": 0.4074,
+     "pctChange": 26.79,
+     "noWarPriceToday": 1.5704,
+     "litresPerDayThisMonth": 13600642,
+     "totalExtraCost": 603990421,
+     "perHouseholdCost": 150.68,
+     "dailyRate": 4864903,
+     "households": 4008300,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 17,
+      "perHouseholdCost": 26,
+      "pctChange": 24
+     }
+    },
+    "IE": {
+     "warStartPrice": 1.737,
+     "currentPrice": 2.1637,
+     "priceIncrease": 0.4267,
+     "pctChange": 24.57,
+     "noWarPriceToday": 1.785,
+     "litresPerDayThisMonth": 9936356,
+     "totalExtraCost": 382821075,
+     "perHouseholdCost": 164.42,
+     "dailyRate": 3762670,
+     "households": 2328300,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 20,
+      "perHouseholdCost": 25,
+      "pctChange": 25
+     }
+    },
+    "IT": {
+     "warStartPrice": 1.7018,
+     "currentPrice": 2.2735,
+     "priceIncrease": 0.5716,
+     "pctChange": 33.59,
+     "noWarPriceToday": 1.745,
+     "litresPerDayThisMonth": 80430554,
+     "totalExtraCost": 5750487191,
+     "perHouseholdCost": 217.46,
+     "dailyRate": 42503613,
+     "households": 26443900,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 3,
+      "perHouseholdCost": 19,
+      "pctChange": 20
+     }
+    },
+    "LT": {
+     "warStartPrice": 1.6146,
+     "currentPrice": 2.2407,
+     "priceIncrease": 0.6261,
+     "pctChange": 38.78,
+     "noWarPriceToday": 1.6609,
+     "litresPerDayThisMonth": 5627294,
+     "totalExtraCost": 465158941,
+     "perHouseholdCost": 264.26,
+     "dailyRate": 3262762,
+     "households": 1760200,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 19,
+      "perHouseholdCost": 12,
+      "pctChange": 11
+     }
+    },
+    "LU": {
+     "warStartPrice": 1.465,
+     "currentPrice": 2.057,
+     "priceIncrease": 0.592,
+     "pctChange": 40.41,
+     "noWarPriceToday": 1.5102,
+     "litresPerDayThisMonth": 3736256,
+     "totalExtraCost": 327324702,
+     "perHouseholdCost": 1135.76,
+     "dailyRate": 2043114,
+     "households": 288200,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 22,
+      "perHouseholdCost": 1,
+      "pctChange": 8
+     }
+    },
+    "LV": {
+     "warStartPrice": 1.528,
+     "currentPrice": 2.1203,
+     "priceIncrease": 0.5923,
+     "pctChange": 38.77,
+     "noWarPriceToday": 1.5712,
+     "litresPerDayThisMonth": 3208359,
+     "totalExtraCost": 273861975,
+     "perHouseholdCost": 308.4,
+     "dailyRate": 1761883,
+     "households": 888000,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 24,
+      "perHouseholdCost": 9,
+      "pctChange": 12
+     }
+    },
+    "MT": {
+     "warStartPrice": 1.21,
+     "currentPrice": 1.21,
+     "priceIncrease": 0.0,
+     "pctChange": 0.0,
+     "noWarPriceToday": 1.21,
+     "litresPerDayThisMonth": 599150,
+     "totalExtraCost": 0,
+     "perHouseholdCost": 0.0,
+     "dailyRate": 0,
+     "households": 242800,
+     "administeredPrice": true,
+     "rank": {
+      "totalExtraCost": 27,
+      "perHouseholdCost": 27,
+      "pctChange": 27
+     }
+    },
+    "NL": {
+     "warStartPrice": 1.873,
+     "currentPrice": 2.5061,
+     "priceIncrease": 0.633,
+     "pctChange": 33.8,
+     "noWarPriceToday": 1.9318,
+     "litresPerDayThisMonth": 18295118,
+     "totalExtraCost": 1628983512,
+     "perHouseholdCost": 188.13,
+     "dailyRate": 10506963,
+     "households": 8658800,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 8,
+      "perHouseholdCost": 23,
+      "pctChange": 19
+     }
+    },
+    "PL": {
+     "warStartPrice": 1.4237,
+     "currentPrice": 1.7645,
+     "priceIncrease": 0.3407,
+     "pctChange": 23.93,
+     "noWarPriceToday": 1.4693,
+     "litresPerDayThisMonth": 64211282,
+     "totalExtraCost": 3692111685,
+     "perHouseholdCost": 237.87,
+     "dailyRate": 18951023,
+     "households": 15521300,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 5,
+      "perHouseholdCost": 15,
+      "pctChange": 26
+     }
+    },
+    "PT": {
+     "warStartPrice": 1.6,
+     "currentPrice": 2.155,
+     "priceIncrease": 0.555,
+     "pctChange": 34.69,
+     "noWarPriceToday": 1.6462,
+     "litresPerDayThisMonth": 14702964,
+     "totalExtraCost": 1163592257,
+     "perHouseholdCost": 255.06,
+     "dailyRate": 7481230,
+     "households": 4562100,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 11,
+      "perHouseholdCost": 13,
+      "pctChange": 17
+     }
+    },
+    "RO": {
+     "warStartPrice": 1.6075,
+     "currentPrice": 2.0496,
+     "priceIncrease": 0.4421,
+     "pctChange": 27.5,
+     "noWarPriceToday": 1.6537,
+     "litresPerDayThisMonth": 22412032,
+     "totalExtraCost": 1296254019,
+     "perHouseholdCost": 170.69,
+     "dailyRate": 8873495,
+     "households": 7594400,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 10,
+      "perHouseholdCost": 24,
+      "pctChange": 23
+     }
+    },
+    "SE": {
+     "warStartPrice": 1.5712,
+     "currentPrice": 2.1179,
+     "priceIncrease": 0.5467,
+     "pctChange": 34.8,
+     "noWarPriceToday": 1.6201,
+     "litresPerDayThisMonth": 15077423,
+     "totalExtraCost": 1041849543,
+     "perHouseholdCost": 215.38,
+     "dailyRate": 7506500,
+     "households": 4837300,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 12,
+      "perHouseholdCost": 20,
+      "pctChange": 15
+     }
+    },
+    "SI": {
+     "warStartPrice": 1.4597,
+     "currentPrice": 1.9815,
+     "priceIncrease": 0.5218,
+     "pctChange": 35.75,
+     "noWarPriceToday": 1.4983,
+     "litresPerDayThisMonth": 4579548,
+     "totalExtraCost": 288028945,
+     "perHouseholdCost": 331.49,
+     "dailyRate": 2212942,
+     "households": 868900,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 23,
+      "perHouseholdCost": 6,
+      "pctChange": 14
+     }
+    },
+    "SK": {
+     "warStartPrice": 1.467,
+     "currentPrice": 1.972,
+     "priceIncrease": 0.505,
+     "pctChange": 34.42,
+     "noWarPriceToday": 1.5143,
+     "litresPerDayThisMonth": 7238863,
+     "totalExtraCost": 357312553,
+     "perHouseholdCost": 206.95,
+     "dailyRate": 3313006,
+     "households": 1726600,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 21,
+      "perHouseholdCost": 21,
+      "pctChange": 18
+     }
+    }
+   }
+  },
+  "febAvg": {
+   "EU": {
+    "warStartPrice": 1.5879,
+    "currentPrice": 2.1485,
+    "priceIncrease": 0.5606,
+    "pctChange": 35.3,
+    "noWarPriceToday": 1.6344,
+    "litresPerDayThisMonth": 670540775,
+    "totalExtraCost": 52936260054,
+    "perHouseholdCost": 260.55,
+    "dailyRate": 346761156,
+    "households": 203172200,
+    "administeredPrice": false
+   },
+   "countries": {
+    "AT": {
+     "warStartPrice": 1.5282,
+     "currentPrice": 2.138,
+     "priceIncrease": 0.6098,
+     "pctChange": 39.9,
+     "noWarPriceToday": 1.5713,
+     "litresPerDayThisMonth": 19972582,
+     "totalExtraCost": 1863890666,
+     "perHouseholdCost": 442.68,
+     "dailyRate": 11319405,
+     "households": 4210500,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 7,
+      "perHouseholdCost": 2,
+      "pctChange": 10
+     }
+    },
+    "BE": {
+     "warStartPrice": 1.6449,
+     "currentPrice": 2.3488,
+     "priceIncrease": 0.7039,
+     "pctChange": 42.79,
+     "noWarPriceToday": 1.69,
+     "litresPerDayThisMonth": 19422219,
+     "totalExtraCost": 1884418973,
+     "perHouseholdCost": 359.4,
+     "dailyRate": 12795719,
+     "households": 5243300,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 6,
+      "perHouseholdCost": 3,
+      "pctChange": 6
+     }
+    },
+    "BG": {
+     "warStartPrice": 1.225,
+     "currentPrice": 1.8929,
+     "priceIncrease": 0.6679,
+     "pctChange": 54.53,
+     "noWarPriceToday": 1.2656,
+     "litresPerDayThisMonth": 8842507,
+     "totalExtraCost": 815140688,
+     "perHouseholdCost": 286.01,
+     "dailyRate": 5546977,
+     "households": 2850000,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 13,
+      "perHouseholdCost": 10,
+      "pctChange": 1
+     }
+    },
+    "CY": {
+     "warStartPrice": 1.3967,
+     "currentPrice": 2.0299,
+     "priceIncrease": 0.6332,
+     "pctChange": 45.34,
+     "noWarPriceToday": 1.4412,
+     "litresPerDayThisMonth": 1245444,
+     "totalExtraCost": 96585709,
+     "perHouseholdCost": 247.59,
+     "dailyRate": 733201,
+     "households": 390100,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 26,
+      "perHouseholdCost": 14,
+      "pctChange": 3
+     }
+    },
+    "CZ": {
+     "warStartPrice": 1.3581,
+     "currentPrice": 1.9521,
+     "priceIncrease": 0.5941,
+     "pctChange": 43.74,
+     "noWarPriceToday": 1.4003,
+     "litresPerDayThisMonth": 18418419,
+     "totalExtraCost": 1484233728,
+     "perHouseholdCost": 324.14,
+     "dailyRate": 10163647,
+     "households": 4579000,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 9,
+      "perHouseholdCost": 8,
+      "pctChange": 4
+     }
+    },
+    "DE": {
+     "warStartPrice": 1.72,
+     "currentPrice": 2.254,
+     "priceIncrease": 0.534,
+     "pctChange": 31.05,
+     "noWarPriceToday": 1.7688,
+     "litresPerDayThisMonth": 115032627,
+     "totalExtraCost": 9684526158,
+     "perHouseholdCost": 232.45,
+     "dailyRate": 55816250,
+     "households": 41662700,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 2,
+      "perHouseholdCost": 19,
+      "pctChange": 22
+     }
+    },
+    "DK": {
+     "warStartPrice": 1.7537,
+     "currentPrice": 2.4885,
+     "priceIncrease": 0.7348,
+     "pctChange": 41.9,
+     "noWarPriceToday": 1.8047,
+     "litresPerDayThisMonth": 7470677,
+     "totalExtraCost": 778282954,
+     "perHouseholdCost": 247.36,
+     "dailyRate": 5108073,
+     "households": 3146300,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 15,
+      "perHouseholdCost": 15,
+      "pctChange": 7
+     }
+    },
+    "EE": {
+     "warStartPrice": 1.41,
+     "currentPrice": 2.096,
+     "priceIncrease": 0.686,
+     "pctChange": 48.65,
+     "noWarPriceToday": 1.4542,
+     "litresPerDayThisMonth": 2559613,
+     "totalExtraCost": 245146959,
+     "perHouseholdCost": 330.39,
+     "dailyRate": 1642675,
+     "households": 742000,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 25,
+      "perHouseholdCost": 7,
+      "pctChange": 2
+     }
+    },
+    "ES": {
+     "warStartPrice": 1.4139,
+     "currentPrice": 1.9176,
+     "priceIncrease": 0.5037,
+     "pctChange": 35.63,
+     "noWarPriceToday": 1.4607,
+     "litresPerDayThisMonth": 71563701,
+     "totalExtraCost": 4842207372,
+     "perHouseholdCost": 245.34,
+     "dailyRate": 32697921,
+     "households": 19736500,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 4,
+      "perHouseholdCost": 16,
+      "pctChange": 18
+     }
+    },
+    "FI": {
+     "warStartPrice": 1.8525,
+     "currentPrice": 2.5529,
+     "priceIncrease": 0.7004,
+     "pctChange": 37.81,
+     "noWarPriceToday": 1.9119,
+     "litresPerDayThisMonth": 7887000,
+     "totalExtraCost": 705094954,
+     "perHouseholdCost": 236.7,
+     "dailyRate": 5055579,
+     "households": 2978800,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 16,
+      "perHouseholdCost": 18,
+      "pctChange": 14
+     }
+    },
+    "FR": {
+     "warStartPrice": 1.6626,
+     "currentPrice": 2.3555,
+     "priceIncrease": 0.6928,
+     "pctChange": 41.67,
+     "noWarPriceToday": 1.7084,
+     "litresPerDayThisMonth": 118027452,
+     "totalExtraCost": 11140053783,
+     "perHouseholdCost": 344.02,
+     "dailyRate": 76372674,
+     "households": 32382000,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 1,
+      "perHouseholdCost": 5,
+      "pctChange": 8
+     }
+    },
+    "GR": {
+     "warStartPrice": 1.5435,
+     "currentPrice": 2.166,
+     "priceIncrease": 0.6225,
+     "pctChange": 40.33,
+     "noWarPriceToday": 1.5934,
+     "litresPerDayThisMonth": 9330583,
+     "totalExtraCost": 800431288,
+     "perHouseholdCost": 197.37,
+     "dailyRate": 5343002,
+     "households": 4055400,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 14,
+      "perHouseholdCost": 23,
+      "pctChange": 9
+     }
+    },
+    "HR": {
+     "warStartPrice": 1.489,
+     "currentPrice": 1.9839,
+     "priceIncrease": 0.4949,
+     "pctChange": 33.24,
+     "noWarPriceToday": 1.5371,
+     "litresPerDayThisMonth": 7112108,
+     "totalExtraCost": 490880694,
+     "perHouseholdCost": 334.73,
+     "dailyRate": 3177530,
+     "households": 1466500,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 18,
+      "perHouseholdCost": 6,
+      "pctChange": 21
+     }
+    },
+    "HU": {
+     "warStartPrice": 1.5183,
+     "currentPrice": 1.9281,
+     "priceIncrease": 0.4098,
+     "pctChange": 26.99,
+     "noWarPriceToday": 1.5678,
+     "litresPerDayThisMonth": 13600642,
+     "totalExtraCost": 611060236,
+     "perHouseholdCost": 152.45,
+     "dailyRate": 4900378,
+     "households": 4008300,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 17,
+      "perHouseholdCost": 26,
+      "pctChange": 24
+     }
+    },
+    "IE": {
+     "warStartPrice": 1.7331,
+     "currentPrice": 2.1637,
+     "priceIncrease": 0.4306,
+     "pctChange": 24.85,
+     "noWarPriceToday": 1.7809,
+     "litresPerDayThisMonth": 9936356,
+     "totalExtraCost": 391446448,
+     "perHouseholdCost": 168.13,
+     "dailyRate": 3803322,
+     "households": 2328300,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 20,
+      "perHouseholdCost": 25,
+      "pctChange": 26
+     }
+    },
+    "IT": {
+     "warStartPrice": 1.6926,
+     "currentPrice": 2.2735,
+     "priceIncrease": 0.5809,
+     "pctChange": 34.32,
+     "noWarPriceToday": 1.7353,
+     "litresPerDayThisMonth": 80430554,
+     "totalExtraCost": 5911890433,
+     "perHouseholdCost": 223.56,
+     "dailyRate": 43286384,
+     "households": 26443900,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 3,
+      "perHouseholdCost": 20,
+      "pctChange": 20
+     }
+    },
+    "LT": {
+     "warStartPrice": 1.6055,
+     "currentPrice": 2.2407,
+     "priceIncrease": 0.6353,
+     "pctChange": 39.57,
+     "noWarPriceToday": 1.6513,
+     "litresPerDayThisMonth": 5627294,
+     "totalExtraCost": 477309463,
+     "perHouseholdCost": 271.17,
+     "dailyRate": 3316747,
+     "households": 1760200,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 19,
+      "perHouseholdCost": 11,
+      "pctChange": 11
+     }
+    },
+    "LU": {
+     "warStartPrice": 1.4327,
+     "currentPrice": 2.057,
+     "priceIncrease": 0.6242,
+     "pctChange": 43.57,
+     "noWarPriceToday": 1.4763,
+     "litresPerDayThisMonth": 3736256,
+     "totalExtraCost": 355271971,
+     "perHouseholdCost": 1232.73,
+     "dailyRate": 2169515,
+     "households": 288200,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 22,
+      "perHouseholdCost": 1,
+      "pctChange": 5
+     }
+    },
+    "LV": {
+     "warStartPrice": 1.5196,
+     "currentPrice": 2.1203,
+     "priceIncrease": 0.6007,
+     "pctChange": 39.53,
+     "noWarPriceToday": 1.5624,
+     "litresPerDayThisMonth": 3208359,
+     "totalExtraCost": 280136537,
+     "perHouseholdCost": 315.47,
+     "dailyRate": 1790070,
+     "households": 888000,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 24,
+      "perHouseholdCost": 9,
+      "pctChange": 12
+     }
+    },
+    "MT": {
+     "warStartPrice": 1.21,
+     "currentPrice": 1.21,
+     "priceIncrease": 0.0,
+     "pctChange": 0.0,
+     "noWarPriceToday": 1.21,
+     "litresPerDayThisMonth": 599150,
+     "totalExtraCost": 0,
+     "perHouseholdCost": 0.0,
+     "dailyRate": 0,
+     "households": 242800,
+     "administeredPrice": true,
+     "rank": {
+      "totalExtraCost": 27,
+      "perHouseholdCost": 27,
+      "pctChange": 27
+     }
+    },
+    "NL": {
+     "warStartPrice": 1.8336,
+     "currentPrice": 2.5061,
+     "priceIncrease": 0.6725,
+     "pctChange": 36.67,
+     "noWarPriceToday": 1.8904,
+     "litresPerDayThisMonth": 18295118,
+     "totalExtraCost": 1785653990,
+     "perHouseholdCost": 206.22,
+     "dailyRate": 11263843,
+     "households": 8658800,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 8,
+      "perHouseholdCost": 22,
+      "pctChange": 16
+     }
+    },
+    "PL": {
+     "warStartPrice": 1.4093,
+     "currentPrice": 1.7645,
+     "priceIncrease": 0.3551,
+     "pctChange": 25.2,
+     "noWarPriceToday": 1.4542,
+     "litresPerDayThisMonth": 64211282,
+     "totalExtraCost": 3885756400,
+     "perHouseholdCost": 250.35,
+     "dailyRate": 19922775,
+     "households": 15521300,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 5,
+      "perHouseholdCost": 13,
+      "pctChange": 25
+     }
+    },
+    "PT": {
+     "warStartPrice": 1.5882,
+     "currentPrice": 2.155,
+     "priceIncrease": 0.5667,
+     "pctChange": 35.68,
+     "noWarPriceToday": 1.6338,
+     "litresPerDayThisMonth": 14702964,
+     "totalExtraCost": 1202053299,
+     "perHouseholdCost": 263.49,
+     "dailyRate": 7662458,
+     "households": 4562100,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 11,
+      "perHouseholdCost": 12,
+      "pctChange": 17
+     }
+    },
+    "RO": {
+     "warStartPrice": 1.5957,
+     "currentPrice": 2.0496,
+     "priceIncrease": 0.4539,
+     "pctChange": 28.44,
+     "noWarPriceToday": 1.6413,
+     "litresPerDayThisMonth": 22412032,
+     "totalExtraCost": 1356442167,
+     "perHouseholdCost": 178.61,
+     "dailyRate": 9151049,
+     "households": 7594400,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 10,
+      "perHouseholdCost": 24,
+      "pctChange": 23
+     }
+    },
+    "SE": {
+     "warStartPrice": 1.532,
+     "currentPrice": 2.1179,
+     "priceIncrease": 0.5859,
+     "pctChange": 38.24,
+     "noWarPriceToday": 1.5829,
+     "litresPerDayThisMonth": 15077423,
+     "totalExtraCost": 1175304386,
+     "perHouseholdCost": 242.97,
+     "dailyRate": 8066168,
+     "households": 4837300,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 12,
+      "perHouseholdCost": 17,
+      "pctChange": 13
+     }
+    },
+    "SI": {
+     "warStartPrice": 1.4406,
+     "currentPrice": 1.9815,
+     "priceIncrease": 0.5409,
+     "pctChange": 37.55,
+     "noWarPriceToday": 1.4782,
+     "litresPerDayThisMonth": 4579548,
+     "totalExtraCost": 308194922,
+     "perHouseholdCost": 354.7,
+     "dailyRate": 2304819,
+     "households": 868900,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 23,
+      "perHouseholdCost": 4,
+      "pctChange": 15
+     }
+    },
+    "SK": {
+     "warStartPrice": 1.462,
+     "currentPrice": 1.972,
+     "priceIncrease": 0.51,
+     "pctChange": 34.88,
+     "noWarPriceToday": 1.5091,
+     "litresPerDayThisMonth": 7238863,
+     "totalExtraCost": 364845876,
+     "perHouseholdCost": 211.31,
+     "dailyRate": 3350974,
+     "households": 1726600,
+     "administeredPrice": false,
+     "rank": {
+      "totalExtraCost": 21,
+      "perHouseholdCost": 21,
+      "pctChange": 19
+     }
+    }
+   }
+  }
+ }
+}

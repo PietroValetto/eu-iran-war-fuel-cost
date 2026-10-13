@@ -1,0 +1,223 @@
+{
+ "bulletinDate": "2026-10-05",
+ "euAvg": 2.0063,
+ "prevWeekAvg": 2.1038,
+ "countries": [
+  {
+   "code": "AT",
+   "name": "Austria",
+   "price": 1.837,
+   "prevWeek": 1.956,
+   "warStart": 1.509,
+   "warStartFebAvg": 1.4885
+  },
+  {
+   "code": "BE",
+   "name": "Belgium",
+   "price": 1.9585,
+   "prevWeek": 2.0319,
+   "warStart": 1.5037,
+   "warStartFebAvg": 1.504
+  },
+  {
+   "code": "BG",
+   "name": "Bulgaria",
+   "price": 1.6628,
+   "prevWeek": 1.6748,
+   "warStart": 1.218,
+   "warStartFebAvg": 1.219
+  },
+  {
+   "code": "CY",
+   "name": "Cyprus",
+   "price": 1.7437,
+   "prevWeek": 1.733,
+   "warStart": 1.312,
+   "warStartFebAvg": 1.3122
+  },
+  {
+   "code": "CZ",
+   "name": "Czechia",
+   "price": 1.8467,
+   "prevWeek": 1.88,
+   "warStart": 1.3718,
+   "warStartFebAvg": 1.3691
+  },
+  {
+   "code": "DE",
+   "name": "Germany",
+   "price": 2.196,
+   "prevWeek": 2.345,
+   "warStart": 1.824,
+   "warStartFebAvg": 1.8093
+  },
+  {
+   "code": "DK",
+   "name": "Denmark",
+   "price": 2.6049,
+   "prevWeek": 2.6581,
+   "warStart": 1.9382,
+   "warStartFebAvg": 1.9184
+  },
+  {
+   "code": "EE",
+   "name": "Estonia",
+   "price": 1.945,
+   "prevWeek": 1.928,
+   "warStart": 1.453,
+   "warStartFebAvg": 1.4485
+  },
+  {
+   "code": "ES",
+   "name": "Spain",
+   "price": 1.8491,
+   "prevWeek": 1.9397,
+   "warStart": 1.4712,
+   "warStartFebAvg": 1.4618
+  },
+  {
+   "code": "FI",
+   "name": "Finland",
+   "price": 2.3701,
+   "prevWeek": 2.3311,
+   "warStart": 1.7125,
+   "warStartFebAvg": 1.8139
+  },
+  {
+   "code": "FR",
+   "name": "France",
+   "price": 2.2117,
+   "prevWeek": 2.2128,
+   "warStart": 1.7103,
+   "warStartFebAvg": 1.728
+  },
+  {
+   "code": "GR",
+   "name": "Greece",
+   "price": 2.203,
+   "prevWeek": 2.205,
+   "warStart": 1.738,
+   "warStartFebAvg": 1.7315
+  },
+  {
+   "code": "HR",
+   "name": "Croatia",
+   "price": 1.8265,
+   "prevWeek": 1.8082,
+   "warStart": 1.471,
+   "warStartFebAvg": 1.4615
+  },
+  {
+   "code": "HU",
+   "name": "Hungary",
+   "price": 1.7256,
+   "prevWeek": 1.7293,
+   "warStart": 1.4617,
+   "warStartFebAvg": 1.4709
+  },
+  {
+   "code": "IE",
+   "name": "Ireland",
+   "price": 1.9827,
+   "prevWeek": 1.9719,
+   "warStart": 1.7386,
+   "warStartFebAvg": 1.7375
+  },
+  {
+   "code": "IT",
+   "name": "Italy",
+   "price": 2.0727,
+   "prevWeek": 2.1562,
+   "warStart": 1.6546,
+   "warStartFebAvg": 1.6473
+  },
+  {
+   "code": "LT",
+   "name": "Lithuania",
+   "price": 1.938,
+   "prevWeek": 1.9537,
+   "warStart": 1.4575,
+   "warStartFebAvg": 1.446
+  },
+  {
+   "code": "LU",
+   "name": "Luxembourg",
+   "price": 1.837,
+   "prevWeek": 1.888,
+   "warStart": 1.457,
+   "warStartFebAvg": 1.451
+  },
+  {
+   "code": "LV",
+   "name": "Latvia",
+   "price": 1.9624,
+   "prevWeek": 2.0378,
+   "warStart": 1.5317,
+   "warStartFebAvg": 1.5243
+  },
+  {
+   "code": "MT",
+   "name": "Malta",
+   "price": 1.34,
+   "prevWeek": 1.34,
+   "warStart": 1.34,
+   "warStartFebAvg": 1.34
+  },
+  {
+   "code": "NL",
+   "name": "Netherlands",
+   "price": 2.4318,
+   "prevWeek": 2.4646,
+   "warStart": 2.0615,
+   "warStartFebAvg": 2.0386
+  },
+  {
+   "code": "PL",
+   "name": "Poland",
+   "price": 1.5196,
+   "prevWeek": 1.8527,
+   "warStart": 1.3767,
+   "warStartFebAvg": 1.3591
+  },
+  {
+   "code": "PT",
+   "name": "Portugal",
+   "price": 2.081,
+   "prevWeek": 2.099,
+   "warStart": 1.686,
+   "warStartFebAvg": 1.6772
+  },
+  {
+   "code": "RO",
+   "name": "Romania",
+   "price": 1.8864,
+   "prevWeek": 1.8973,
+   "warStart": 1.546,
+   "warStartFebAvg": 1.5338
+  },
+  {
+   "code": "SE",
+   "name": "Sweden",
+   "price": 1.5893,
+   "prevWeek": 1.5948,
+   "warStart": 1.4335,
+   "warStartFebAvg": 1.4158
+  },
+  {
+   "code": "SI",
+   "name": "Slovenia",
+   "price": 1.7631,
+   "prevWeek": 1.7445,
+   "warStart": 1.4197,
+   "warStartFebAvg": 1.4094
+  },
+  {
+   "code": "SK",
+   "name": "Slovakia",
+   "price": 1.845,
+   "prevWeek": 1.853,
+   "warStart": 1.474,
+   "warStartFebAvg": 1.4737
+  }
+ ]
+}

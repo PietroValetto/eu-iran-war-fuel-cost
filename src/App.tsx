@@ -8,15 +8,17 @@ import { Methodology } from "./Methodology";
 import { longDate } from "./format";
 import { UsComparison } from "./UsComparison";
 import { TaxSplit } from "./TaxSplit";
+import { EnergyBill } from "./EnergyBill";
 
 const REPO_URL = "https://github.com/PietroValetto/eu-iran-war-fuel-cost";
 
 const BROWN_URL = "https://iranwarcost.watson.brown.edu/";
 
 // Tabs and country panels share the URL hash: #fuel, #us, or a country code like #IT.
-export type Tab = "fuel" | "us";
+export type Tab = "fuel" | "energy" | "us";
 const TABS: { id: Tab; label: string }[] = [
   { id: "fuel", label: "Fuel" },
+  { id: "energy", label: "Energy bill" },
   { id: "us", label: "EU vs US" },
 ];
 const readHash = () => window.location.hash.replace("#", "");
@@ -34,16 +36,18 @@ export default function App() {
     loadAll().then(setData).catch((e) => setError(String(e)));
   }, []);
 
+  // Optional tabs only show when their data file loaded.
+  const available = (t: Tab) => t === "fuel" || (t === "us" ? Boolean(data?.us) : Boolean(data?.household || data?.heating));
+
   // Tabs and country pages are shareable: /#us opens the US comparison, /#IT opens Italy's breakdown.
   useEffect(() => {
     if (!data) return;
     const sync = () => {
       const h = readHash();
       const t = TABS.find((x) => x.id === h.toLowerCase());
-      if (t && (t.id !== "us" || data.us)) { setTab(t.id); setCountry(null); return; }
+      if (t && available(t.id)) { setTab(t.id); setCountry(null); return; }
       const c = h.toUpperCase();
       const isCountry = Boolean(data.fuels.petrol.deficit.scenarios.lastBulletin.countries[c]);
-      if (isCountry) setTab("fuel");
       setCountry(isCountry ? c : null);
     };
     sync();
@@ -52,7 +56,7 @@ export default function App() {
   }, [data]);
 
   const openCountry = (c: string) => { window.location.hash = c; };
-  const closeCountry = () => { history.replaceState(null, "", window.location.pathname + window.location.search + "#fuel"); setCountry(null); };
+  const closeCountry = () => { history.replaceState(null, "", window.location.pathname + window.location.search + "#" + tab); setCountry(null); };
   const openTab = (t: Tab) => { window.location.hash = t; window.scrollTo({ top: 0 }); };
 
   if (error) return <main className="page"><p className="lede">Could not load data: {error}</p></main>;
@@ -84,7 +88,7 @@ export default function App() {
       </p>
 
       <nav className="tabs" role="tablist" aria-label="Views">
-        {TABS.filter((t) => t.id !== "us" || data.us).map((t) => (
+        {TABS.filter((t) => available(t.id)).map((t) => (
           <button key={t.id} role="tab" aria-selected={tab === t.id} className={tab === t.id ? "is-active" : ""} onClick={() => openTab(t.id)}>
             {t.label}
           </button>
@@ -99,6 +103,7 @@ export default function App() {
           <CountryMap data={data} fuel={fuel} scenario={scenario} onSelect={openCountry} />
         </>
       )}
+      {tab === "energy" && <EnergyBill data={data} scenario={scenario} onSelect={openCountry} />}
       {tab === "us" && data.us && <UsComparison us={data.us} />}
 
       <footer className="status">

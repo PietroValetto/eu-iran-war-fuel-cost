@@ -80,7 +80,9 @@ def _consumption(ws) -> dict:
         for a in EU27:
             out[r[0]][a] = {}
             for f, (suffix, _, _) in FUELS.items():
-                v = r[col.get(f"{a}_consumption_{suffix}", -1)] if f"{a}_consumption_{suffix}" in col else None
+                # The bulletin's own header has a typo: heating oil is "XX_consumption_heXXing_oil".
+                key = f"{a}_consumption_he{a}ing_oil" if suffix == "heating_oil" else f"{a}_consumption_{suffix}"
+                v = r[col[key]] if key in col else None
                 if isinstance(v, (int, float)):
                     out[r[0]][a][f] = float(v)
     return out

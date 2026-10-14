@@ -196,3 +196,22 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .relief-table .measures { display: none; }
   .split-seg b { font-size: var(--text-lg); }
 }
+
+/* --- Energy bill --------------------------------------------------------- */
+.energy-bar { display: flex; gap: 3px; margin: var(--space-10) 0 var(--space-6); min-height: 72px; border-radius: var(--radius-md); overflow: hidden; }
+.energy-seg { display: flex; flex-direction: column; justify-content: center; padding: var(--space-4) var(--space-5); font-size: var(--text-xs); flex-basis: 0; min-width: 6px; overflow: hidden; line-height: 1.25; }
+.energy-seg b { font-family: var(--font-display); font-weight: var(--weight-black); font-size: var(--text-lg); letter-spacing: var(--track-title); font-feature-settings: var(--figures-tabular); }
+.seg-road { background: var(--pe-amber); color: var(--text-primary); }
+.seg-heating { background: var(--pe-green); color: var(--text-on-brand); }
+.seg-gas { background: var(--pe-green-deep); color: var(--text-on-brand); }
+.seg-elec { background: var(--pe-ink); color: var(--text-on-dark); }
+.seg-other { background: var(--surface-canvas); color: var(--text-primary); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 8px; vertical-align: baseline; }
+.energy-table td.num, .energy-table th.num { white-space: nowrap; }
+.panel-energy { margin-top: var(--space-4); }
+@media (max-width: 480px) {
+  .hide-sm { display: none; }
+  .energy-bar { min-height: 22px; }
+  .energy-seg { font-size: 0; padding: 0; }
+  .energy-seg b { display: none; }
+}

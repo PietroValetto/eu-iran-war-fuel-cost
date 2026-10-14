@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useModal } from "./useModal";
 import { taxMeasures } from "./TaxSplit";
+import { energyByCountry } from "./EnergyBill";
 import { AllData, FUELS, FUEL_LABEL, FUEL_SUB, Fuel, Scenario, entry } from "./data";
 import { useLive } from "./Headline";
 import { ChartLegend, PriceChart } from "./PriceChart";
@@ -89,6 +90,16 @@ export function CountryPanel({ data, code, fuel, scenario, onFuel, onClose }: Pr
             <span className="stat-note">litres/day this month</span>
           </div>
         </div>
+
+        {(data.household || data.heating) && (() => {
+          const en = energyByCountry(data, scenario)[code];
+          return (
+            <p className="stat-note panel-energy" data-tabular>
+              Including heating oil ({euroShort(en.parts.heating)}) and household gas and electricity ({euroShort(en.parts.household)}),
+              the war has added <strong>{euroShort(en.total)}</strong> to energy costs here, or <strong>{euro(en.total / area.households)}</strong> per household.
+            </p>
+          );
+        })()}
 
         {(() => {
           const relief = FUELS.reduce((t, f) => t + e(f).taxRelief + e(f).stateCostFixedPrice, 0);

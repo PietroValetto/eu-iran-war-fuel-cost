@@ -29,7 +29,8 @@
     "vatWindfall": 10241064314,
     "stateCostFixedPrice": 54321296,
     "reliefPerLitreNow": 0.1046,
-    "totalShock": 63408581157
+    "totalShock": 63408581157,
+    "countriesWithoutPrices": []
    },
    "countries": {
     "AT": {
@@ -1280,7 +1281,8 @@
     "vatWindfall": 10200721024,
     "stateCostFixedPrice": 54321296,
     "reliefPerLitreNow": 0.0979,
-    "totalShock": 63304842493
+    "totalShock": 63304842493,
+    "countriesWithoutPrices": []
    },
    "countries": {
     "AT": {

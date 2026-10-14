@@ -8,9 +8,10 @@ import sys
 
 import fetch_eurostat
 import fetch_wob
+import household_energy
 import us_comparison
 from burden import burden
-from common import EU27, FUELS, NAMES, SEASONAL_YEARS, WAR_START, interpolate_daily, write_json
+from common import EU27, FUELS, HEADLINE_FUELS, NAMES, SEASONAL_YEARS, WAR_START, interpolate_daily, write_json
 from counterfactual import seasonal_weekly_change, weekly_path
 from tax_split import implied_pretax_cf, split as tax_split
 
@@ -20,6 +21,32 @@ SCENARIOS = ("lastBulletin", "febAvg")
 
 def r(x, n=4):
     return round(x, n)
+
+
+def empty_entry(households: int) -> dict:
+    """Placeholder for a country with no bulletin price for a product: zero cost, flagged."""
+    zero = ("warStartPrice", "currentPrice", "priceIncrease", "pctChange", "noWarPriceToday", "litresPerDayThisMonth",
+            "totalExtraCost", "perHouseholdCost", "dailyRate", "taxRelief", "vatWindfall", "stateCostFixedPrice",
+            "totalShock", "reliefPerLitreNow")
+    return {k: 0 for k in zero} | {"households": households, "administeredPrice": False, "administeredSince": None,
+                                    "noPriceData": True}
+
+
+def fill_volume_gaps(vols: dict, wob: dict) -> None:
+    """Countries missing Eurostat monthly volumes: bulletin annual consumption x the EU's monthly shape."""
+    year = max(wob["consumption"])
+    for area in EU27:
+        for fuel, (_, _, l_per_t) in FUELS.items():
+            months = vols["litresPerDay"][area][fuel]
+            eu = vols["litresPerDay"]["EU"][fuel]
+            kt = wob["consumption"][year].get(area, {}).get(fuel)
+            if len(months) == 12 or not kt or len(eu) < 12:
+                continue
+            mean = sum(eu.values()) / 12
+            base = kt * 1000 * l_per_t / 365
+            for m, v in eu.items():
+                months.setdefault(m, base * v / mean)
+            vols["gaps"].append(f"{area}/{fuel}: filled from Oil Bulletin annual consumption ({year})")
 
 
 def main(cached: bool = False) -> None:
@@ -35,6 +62,7 @@ def main(cached: bool = False) -> None:
     feb = [d for d in prewar if d.month == 2]
     weights_year = max(wob["consumption"])
     sensitivity = {}
+    fill_volume_gaps(vols, wob)
     eu_final = {}
 
     for fuel in FUELS:
@@ -50,9 +78,16 @@ def main(cached: bool = False) -> None:
 
         eu_pretax_shock = {}
         # The EU aggregate goes first: its pre-tax shock is needed to estimate fixed-price countries' state cost.
+        no_price = []
         for area in ["EU"] + EU27:
             retail = {d: p for d, p in wob["with_tax"][area][fuel].items() if d >= SERIES_START}
             pretax = {d: p for d, p in wob["wo_tax"][area][fuel].items() if d >= SERIES_START}
+            if last_prewar not in retail or last_prewar not in pretax:
+                # No bulletin price for this product (e.g. heating oil in BG, NL, SK): not covered.
+                no_price.append(area)
+                for s in SCENARIOS:
+                    deficit[s]["countries"][area] = empty_entry(hh[area]["households"])
+                continue
             if area == "EU":
                 vat0 = sum(fetch_wob.vat_at(wob["vat"], c, fuel, last_prewar) * w for c, w in eu_weights.items()) / wsum
             else:
@@ -98,8 +133,8 @@ def main(cached: bool = False) -> None:
                                   lambda d, a=area: (vat0 if a == "EU" else fetch_wob.vat_at(wob["vat"], a, fuel, d)),
                                   litres, WAR_START, end, administered, eu_pretax_shock)
                 entry = {
-                    "warStartPrice": r(a_retail), "currentPrice": r(retail[end]),
-                    "priceIncrease": r(retail[end] - a_retail), "pctChange": r((retail[end] / a_retail - 1) * 100, 2),
+                    "warStartPrice": r(a_retail), "currentPrice": r(actual_daily[end]),
+                    "priceIncrease": r(actual_daily[end] - a_retail), "pctChange": r((actual_daily[end] / a_retail - 1) * 100, 2),
                     "noWarPriceToday": r(cf_daily[s][end]),
                     "litresPerDayThisMonth": round(litres(end)),
                     "totalExtraCost": round(b), "perHouseholdCost": round(b / hh_n, 2),
@@ -127,7 +162,7 @@ def main(cached: bool = False) -> None:
                                 "priceFebAvg": r(cf_daily["febAvg"][d])} for d in sorted(cf_daily["lastBulletin"])]
             if area != "EU":
                 prev = bulletin_dates[-2]
-                current.append({"code": area, "name": NAMES[area], "price": r(retail[end]), "prevWeek": r(retail[prev]),
+                current.append({"code": area, "name": NAMES[area], "price": r(actual_daily[end]), "prevWeek": r(actual_daily[prev]),
                                 "warStart": r(anchors["lastBulletin"][0]), "warStartFebAvg": r(anchors["febAvg"][0])})
 
         # EU totals = sum of the 27 member states (the EU's own consumption-weighted price is kept for the chart).
@@ -142,6 +177,8 @@ def main(cached: bool = False) -> None:
                 ranked = sorted(EU27, key=lambda c: deficit[s]["countries"][c][metric], reverse=True)
                 for i, c in enumerate(ranked, 1):
                     deficit[s]["countries"][c].setdefault("rank", {})[metric] = i
+        for s in SCENARIOS:
+            deficit[s]["EU"]["countriesWithoutPrices"] = no_price
         eu_final[fuel] = deficit["lastBulletin"]["EU"]
         sensitivity[fuel] = {"lastBulletin": round(totals["lastBulletin"]), "excluding2022Seasonality": round(total_ex22),
                              "euDirectFormula": deficit["lastBulletin"]["euDirect"]["totalExtraCost"]}
@@ -160,8 +197,12 @@ def main(cached: bool = False) -> None:
             "scenarios": {s: {"EU": deficit[s]["EU"], "countries": deficit[s]["countries"]} for s in SCENARIOS},
         })
 
-    eu_lpd = {f: sum(vols["litresPerDay"]["EU"][f].values()) / 12 for f in FUELS}
+    eu_lpd = {f: sum(vols["litresPerDay"]["EU"][f].values()) / 12 for f in HEADLINE_FUELS}
     us_comparison.build(end, eu_final, hh["EU"]["households"], eu_lpd)
+    try:
+        write_json("household-energy.json", household_energy.build())
+    except Exception as e:  # noqa: BLE001 - keep last week's file if Eurostat is unreachable
+        print(f"household energy not refreshed ({e})")
 
     write_json("monthly-demand.json", {"source": "Eurostat nrg_cb_oilm, gross inland deliveries (GID_OBS): O4652 motor gasoline, "
                                                  "O46711 road diesel; 2021-2025 average litres/day by calendar month",
@@ -174,9 +215,12 @@ def main(cached: bool = False) -> None:
                              "litresPerTonne": {f: v[2] for f, v in FUELS.items()}})
 
     for fuel, s in sensitivity.items():
+        if fuel not in HEADLINE_FUELS:
+            print(f"{fuel} (not in headline): EU27 €{s['lastBulletin'] / 1e9:.2f}B")
+            continue
         print(f"{fuel}: EU27 €{s['lastBulletin'] / 1e9:.2f}B  (EU-level formula €{s['euDirectFormula'] / 1e9:.2f}B, "
               f"seasonality ex-2022 €{s['excluding2022Seasonality'] / 1e9:.2f}B)")
-    tot = sum(s["lastBulletin"] for s in sensitivity.values())
+    tot = sum(s["lastBulletin"] for f, s in sensitivity.items() if f in HEADLINE_FUELS)
     print(f"TOTAL €{tot / 1e9:.2f}B = €{tot / hh['EU']['households']:.0f} per household, through {end}")
 
 

@@ -1,0 +1,199 @@
+{
+ "bulletinDate": "2026-10-05",
+ "euAvg": 1.7419,
+ "prevWeekAvg": 1.7473,
+ "countries": [
+  {
+   "code": "AT",
+   "name": "Austria",
+   "price": 1.8,
+   "prevWeek": 1.8595,
+   "warStart": 1.0987,
+   "warStartFebAvg": 1.083
+  },
+  {
+   "code": "BE",
+   "name": "Belgium",
+   "price": 1.5334,
+   "prevWeek": 1.5629,
+   "warStart": 0.8124,
+   "warStartFebAvg": 0.7857
+  },
+  {
+   "code": "CY",
+   "name": "Cyprus",
+   "price": 1.6711,
+   "prevWeek": 1.6338,
+   "warStart": 0.9485,
+   "warStartFebAvg": 0.9402
+  },
+  {
+   "code": "CZ",
+   "name": "Czechia",
+   "price": 1.4951,
+   "prevWeek": 1.5261,
+   "warStart": 0.8276,
+   "warStartFebAvg": 0.8294
+  },
+  {
+   "code": "DE",
+   "name": "Germany",
+   "price": 1.7264,
+   "prevWeek": 1.6974,
+   "warStart": 0.9579,
+   "warStartFebAvg": 0.9494
+  },
+  {
+   "code": "DK",
+   "name": "Denmark",
+   "price": 2.4495,
+   "prevWeek": 2.5028,
+   "warStart": 1.7739,
+   "warStartFebAvg": 1.7456
+  },
+  {
+   "code": "EE",
+   "name": "Estonia",
+   "price": 1.715,
+   "prevWeek": 1.652,
+   "warStart": 1.031,
+   "warStartFebAvg": 1.025
+  },
+  {
+   "code": "ES",
+   "name": "Spain",
+   "price": 1.4953,
+   "prevWeek": 1.5255,
+   "warStart": 0.9116,
+   "warStartFebAvg": 0.9008
+  },
+  {
+   "code": "FI",
+   "name": "Finland",
+   "price": 2.0482,
+   "prevWeek": 2.1031,
+   "warStart": 1.3287,
+   "warStartFebAvg": 1.3057
+  },
+  {
+   "code": "FR",
+   "name": "France",
+   "price": 1.9071,
+   "prevWeek": 1.9373,
+   "warStart": 1.2035,
+   "warStartFebAvg": 1.1927
+  },
+  {
+   "code": "GR",
+   "name": "Greece",
+   "price": 1.742,
+   "prevWeek": 1.742,
+   "warStart": 1.159,
+   "warStartFebAvg": 1.1538
+  },
+  {
+   "code": "HR",
+   "name": "Croatia",
+   "price": 1.67,
+   "prevWeek": 1.72,
+   "warStart": 0.89,
+   "warStartFebAvg": 0.8775
+  },
+  {
+   "code": "HU",
+   "name": "Hungary",
+   "price": 1.9281,
+   "prevWeek": 1.9323,
+   "warStart": 1.5207,
+   "warStartFebAvg": 1.5183
+  },
+  {
+   "code": "IE",
+   "name": "Ireland",
+   "price": 1.4872,
+   "prevWeek": 1.5687,
+   "warStart": 0.9644,
+   "warStartFebAvg": 0.9518
+  },
+  {
+   "code": "IT",
+   "name": "Italy",
+   "price": 2.0631,
+   "prevWeek": 2.0745,
+   "warStart": 1.4037,
+   "warStartFebAvg": 1.3939
+  },
+  {
+   "code": "LT",
+   "name": "Lithuania",
+   "price": 1.5749,
+   "prevWeek": 1.6284,
+   "warStart": 0.9176,
+   "warStartFebAvg": 0.9016
+  },
+  {
+   "code": "LU",
+   "name": "Luxembourg",
+   "price": 1.539,
+   "prevWeek": 1.575,
+   "warStart": 0.901,
+   "warStartFebAvg": 0.8712
+  },
+  {
+   "code": "LV",
+   "name": "Latvia",
+   "price": 1.8844,
+   "prevWeek": 1.8167,
+   "warStart": 1.1263,
+   "warStartFebAvg": 1.1179
+  },
+  {
+   "code": "MT",
+   "name": "Malta",
+   "price": 1.0,
+   "prevWeek": 1.0,
+   "warStart": 1.0,
+   "warStartFebAvg": 1.0
+  },
+  {
+   "code": "PL",
+   "name": "Poland",
+   "price": 1.6628,
+   "prevWeek": 1.7125,
+   "warStart": 1.0186,
+   "warStartFebAvg": 1.0016
+  },
+  {
+   "code": "PT",
+   "name": "Portugal",
+   "price": 2.204,
+   "prevWeek": 2.228,
+   "warStart": 1.53,
+   "warStartFebAvg": 1.5255
+  },
+  {
+   "code": "RO",
+   "name": "Romania",
+   "price": 1.5892,
+   "prevWeek": 1.6359,
+   "warStart": 0.8632,
+   "warStartFebAvg": 0.8383
+  },
+  {
+   "code": "SE",
+   "name": "Sweden",
+   "price": 1.918,
+   "prevWeek": 1.9341,
+   "warStart": 1.211,
+   "warStartFebAvg": 1.1902
+  },
+  {
+   "code": "SI",
+   "name": "Slovenia",
+   "price": 1.6289,
+   "prevWeek": 1.6648,
+   "warStart": 1.1087,
+   "warStartFebAvg": 1.0911
+  }
+ ]
+}

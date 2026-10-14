@@ -237,3 +237,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .scale-row { grid-template-columns: 1fr auto; }
   .scale-row .scale-track { grid-column: 1 / -1; grid-row: 2; }
 }
+
+/* --- Assumptions ------------------------------------------------------------ */
+.range-line { font-size: var(--text-sm); color: var(--text-secondary); margin-top: var(--space-3); }
+.range-line strong { color: var(--text-primary); }
+.assume-row { margin: var(--space-8) 0; }
+.assume-row .toggle-row button small { color: inherit; opacity: .7; }
+.assume-explain { font-size: var(--text-sm); color: var(--text-secondary) !important; }
+.assume-result { display: flex; flex-direction: column; gap: 4px; margin: var(--space-10) 0 var(--space-6); padding: var(--space-8); background: var(--pe-amber-tint); border-left: 3px solid var(--pe-amber); border-radius: 0 var(--radius-md) var(--radius-md) 0; }

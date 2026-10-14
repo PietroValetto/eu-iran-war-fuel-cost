@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { EuMap } from "./EuMap";
-import { AllData, FUEL_LABEL, Fuel, Scenario } from "./data";
+import { AllData, Entry, FUEL_LABEL, Fuel, Scenario } from "./data";
 import { euro, euro2, euroShort, monthYear, perLitre, signed } from "./format";
 
-export type Metric = "currentPrice" | "priceIncrease" | "totalExtraCost" | "perHouseholdCost" | "taxRelief";
+export type Metric = "currentPrice" | "priceIncrease" | "totalExtraCost" | "perHouseholdCost" | "perCar" | "taxRelief";
 const METRICS: { key: Metric; label: string; fmt: (v: number) => string; short: (v: number) => string }[] = [
   { key: "currentPrice", label: "Current price", fmt: perLitre, short: perLitre },
   { key: "priceIncrease", label: "Price change", fmt: (v) => `${signed(v)} /L`, short: (v) => signed(v, 2) },
   { key: "totalExtraCost", label: "Total consumer cost", fmt: euro, short: euroShort },
   { key: "perHouseholdCost", label: "Household cost", fmt: euro2, short: (v) => euro(v) },
+  { key: "perCar", label: "Cost per car", fmt: euro2, short: (v) => euro(v) },
   { key: "taxRelief", label: "Tax cuts", fmt: euro, short: euroShort },
 ];
 
@@ -21,7 +22,9 @@ export function CountryMap({ data, fuel, scenario, onSelect }: Props) {
 
   const countries = data.fuels[fuel].deficit.scenarios[scenario].countries;
   const m = METRICS.find((x) => x.key === metric)!;
-  const ranked = Object.entries(countries).sort((a, b) => (sortDesc ? b[1][metric] - a[1][metric] : a[1][metric] - b[1][metric]));
+  // Cost per car = the country's extra fuel cost / passenger cars in use (Eurostat road_eqs_carpda).
+  const val = (c: string, e: Entry) => (metric === "perCar" ? e.totalExtraCost / (data.households.areas[c]?.cars ?? Infinity) : e[metric]);
+  const ranked = Object.entries(countries).sort((a, b) => (sortDesc ? val(b[0], b[1]) - val(a[0], a[1]) : val(a[0], a[1]) - val(b[0], b[1])));
   const hovered = hover && countries[hover] ? hover : null;
   const name = (c: string) => data.households.areas[c]?.name ?? c;
   const euAvg = data.fuels[fuel].current.euAvg;
@@ -43,7 +46,7 @@ export function CountryMap({ data, fuel, scenario, onSelect }: Props) {
       <p className="hint">Click a country, or press Enter on one, for a detailed breakdown.</p>
 
       <div className="map-layout">
-        <EuMap values={Object.fromEntries(Object.entries(countries).map(([c, e]) => [c, e[metric]]))} label={m.label}
+        <EuMap values={Object.fromEntries(Object.entries(countries).map(([c, e]) => [c, val(c, e)]))} label={m.label}
           fmt={m.fmt} short={m.short} name={name} hover={hover} setHover={setHover} onSelect={onSelect}
           note={(c) => (countries[c]?.administeredPrice ? "fixed price" : null)} />
 
@@ -68,7 +71,7 @@ export function CountryMap({ data, fuel, scenario, onSelect }: Props) {
                     <button className="link" onClick={() => onSelect(c)}>{name(c)}</button>
                     {e.administeredPrice && <sup className="fn" aria-label="fixed price, see note">*</sup>}
                   </td>
-                  <td className="num" data-tabular>{m.fmt(e[metric])}</td>
+                  <td className="num" data-tabular>{m.fmt(val(c, e))}</td>
                 </tr>
               ))}
             </tbody>

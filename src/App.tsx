@@ -10,6 +10,7 @@ import { UsComparison } from "./UsComparison";
 import { TaxSplit } from "./TaxSplit";
 import { EnergyBill } from "./EnergyBill";
 import { WhatIf } from "./WhatIf";
+import { Assumptions } from "./Assumptions";
 
 const REPO_URL = "https://github.com/PietroValetto/eu-iran-war-fuel-cost";
 
@@ -33,6 +34,7 @@ export default function App() {
   const [country, setCountry] = useState<string | null>(null);
   const [tab, setTab] = useState<Tab>("fuel");
   const [showMethod, setShowMethod] = useState(false);
+  const [showAssumptions, setShowAssumptions] = useState(false);
 
   useEffect(() => {
     loadAll().then(setData).catch((e) => setError(String(e)));
@@ -100,7 +102,7 @@ export default function App() {
 
       {tab === "fuel" && (
         <>
-          <Headline data={data} scenario={scenario} fuel={fuel} onFuel={(f) => { setFuel(f); document.getElementById("breakdown")?.scrollIntoView({ behavior: "smooth" }); }} />
+          <Headline data={data} scenario={scenario} fuel={fuel} onAssumptions={() => setShowAssumptions(true)} onFuel={(f) => { setFuel(f); document.getElementById("breakdown")?.scrollIntoView({ behavior: "smooth" }); }} />
           <FuelBreakdown data={data} fuel={fuel} scenario={scenario} />
           <TaxSplit data={data} scenario={scenario} onSelect={openCountry} />
           <CountryMap data={data} fuel={fuel} scenario={scenario} onSelect={openCountry} />
@@ -123,6 +125,7 @@ export default function App() {
       </footer>
 
       {country && <CountryPanel key={country} data={data} code={country} fuel={fuel} scenario={scenario} onFuel={setFuel} onClose={closeCountry} />}
+      {showAssumptions && <Assumptions onClose={() => setShowAssumptions(false)} />}
       {showMethod && <Methodology data={data} scenario={scenario} onScenario={setScenario} onClose={() => setShowMethod(false)} />}
     </main>
   );

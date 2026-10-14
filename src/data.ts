@@ -52,7 +52,7 @@ export interface Current {
 }
 export interface Households {
   source: string;
-  areas: Record<string, { households: number; population: number; householdsYear: number; name: string }>;
+  areas: Record<string, { households: number; population: number; householdsYear: number; name: string; cars?: number; carsYear?: number }>;
 }
 export interface Meta { builtAt: string; latestBulletin: string; sensitivity: Record<Fuel, Record<string, number>> }
 export interface Demand { eurostatUpdated: string; gaps: string[] }

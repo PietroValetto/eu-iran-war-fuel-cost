@@ -49,10 +49,41 @@ def fill_volume_gaps(vols: dict, wob: dict) -> None:
             vols["gaps"].append(f"{area}/{fuel}: filled from Oil Bulletin annual consumption ({year})")
 
 
+def scenario_grid(grid: dict, vols: dict, actual_vols: dict, hh: dict) -> dict:
+    """Totals for every assumption combination, plus how far 2026 fuel demand moved from normal."""
+    combos = []
+    for (b, se, vo), countries in sorted(grid.items()):
+        total = sum(countries.values())
+        combos.append({"baseline": b, "seasonality": se, "volumes": vo, "total": round(total),
+                       "perHousehold": round(total / hh["EU"]["households"], 2),
+                       "countries": {c: round(v) for c, v in countries.items()}})
+    # Demand response: actual vs normal deliveries over the war months Eurostat has published.
+    demand = {}
+    for fuel in HEADLINE_FUELS:
+        act = actual_vols.get("EU", {}).get(fuel, {})
+        months = sorted(m for m in act if m >= f"{WAR_START.year}-{WAR_START.month + 1:02d}")
+        if months:
+            normal = sum(vols["litresPerDay"]["EU"][fuel][m[5:]] for m in months)
+            demand[fuel] = {"months": months, "pctVsNormal": round((sum(act[m] for m in months) / normal - 1) * 100, 2)}
+    return {
+        "default": {"baseline": "lastBulletin", "seasonality": "2021-25", "volumes": "normal"},
+        "labels": {
+            "baseline": {"lastBulletin": "Last pre-war bulletin", "febAvg": "February 2026 average"},
+            "seasonality": {"2021-25": "Seasonal pattern 2021–25 (as US tracker)", "ex2022": "Seasonal pattern without 2022"},
+            "volumes": {"normal": "Normal volumes (2021–25 average)", "actual": "Actual 2026 volumes where published"},
+        },
+        "combos": combos,
+        "demandResponse": demand,
+        "actualVolumesThrough": {a: max(v.get("petrol", {"-": 0})) for a, v in actual_vols.items() if v.get("petrol")},
+    }
+
+
 def main(cached: bool = False) -> None:
     wob = fetch_wob.load(force_download=not cached)
     vols = fetch_eurostat.monthly_litres()
     hh = fetch_eurostat.households()
+    actual_vols = fetch_eurostat.monthly_actual()
+    car_stock = fetch_eurostat.cars()
     now = dt.datetime.now(dt.timezone.utc)
 
     bulletin_dates = sorted(d for d in wob["with_tax"]["EU"]["petrol"] if d >= SERIES_START)
@@ -64,6 +95,8 @@ def main(cached: bool = False) -> None:
     sensitivity = {}
     fill_volume_gaps(vols, wob)
     eu_final = {}
+    # Assumption grid (Fuel tab range + Assumptions panel): baseline x seasonal window x volumes.
+    grid: dict[tuple, dict[str, float]] = {}
 
     for fuel in FUELS:
         season = seasonal_weekly_change(wob["wo_tax"]["EU"][fuel])
@@ -154,6 +187,19 @@ def main(cached: bool = False) -> None:
                     deficit[s]["euDirect"] = entry
                 else:
                     deficit[s]["countries"][area] = entry
+            if area != "EU" and fuel in HEADLINE_FUELS:
+                actual_m = actual_vols.get(area, {}).get(fuel, {})
+
+                def litres_actual(d, m=month_lpd, a=actual_m):
+                    return a.get(f"{d.year}-{d.month:02d}", m[f"{d.month:02d}"])
+
+                for b_key, anchor in anchors.items():
+                    for se_key, se in (("2021-25", season), ("ex2022", season_ex22)):
+                        cf = interpolate_daily(weekly_path(last_prewar, *anchor, vat0, bulletin_dates, {} if administered else se),
+                                               WAR_START, end)
+                        for vo_key, vol in (("normal", litres), ("actual", litres_actual)):
+                            cell = grid.setdefault((b_key, se_key, vo_key), {})
+                            cell[area] = cell.get(area, 0.0) + burden(actual_daily, cf, vol, WAR_START, end)
             if area != "EU":
                 ex = interpolate_daily(weekly_path(last_prewar, *anchors["lastBulletin"], vat0, bulletin_dates, {} if administered else season_ex22), WAR_START, end)
                 total_ex22 += burden(actual_daily, ex, litres, WAR_START, end)
@@ -199,6 +245,7 @@ def main(cached: bool = False) -> None:
 
     eu_lpd = {f: sum(vols["litresPerDay"]["EU"][f].values()) / 12 for f in HEADLINE_FUELS}
     us_comparison.build(end, eu_final, hh["EU"]["households"], eu_lpd)
+    write_json("scenarios.json", scenario_grid(grid, vols, actual_vols, hh))
     try:
         write_json("household-energy.json", household_energy.build())
     except Exception as e:  # noqa: BLE001 - keep last week's file if Eurostat is unreachable
@@ -209,7 +256,7 @@ def main(cached: bool = False) -> None:
                                        "eurostatUpdated": vols["updated"], "gaps": vols["gaps"],
                                        "litresPerDay": vols["litresPerDay"]})
     write_json("households.json", {"source": "Eurostat lfst_hhnhtych (private households), demo_pjan (population)",
-                                   "areas": {a: hh[a] | {"name": NAMES[a]} for a in EU27 + ["EU"]}})
+                                   "areas": {a: hh[a] | car_stock.get(a, {}) | {"name": NAMES[a]} for a in EU27 + ["EU"]}})
     write_json("meta.json", {"builtAt": now.isoformat(), "latestBulletin": end.isoformat(),
                              "bulletinWeeks": len(bulletin_dates), "sensitivity": sensitivity,
                              "litresPerTonne": {f: v[2] for f, v in FUELS.items()}})

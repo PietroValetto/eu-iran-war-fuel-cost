@@ -23,7 +23,8 @@
     "perHouseholdCost": 66.52,
     "dailyRate": 98637530,
     "households": 203172200,
-    "administeredPrice": false
+    "administeredPrice": false,
+    "administeredSince": null
    },
    "countries": {
     "AT": {
@@ -38,6 +39,7 @@
      "dailyRate": 1721294,
      "households": 4210500,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 12,
       "perHouseholdCost": 11,
@@ -56,6 +58,7 @@
      "dailyRate": 3978581,
      "households": 5243300,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 6,
       "perHouseholdCost": 5,
@@ -74,6 +77,7 @@
      "dailyRate": 869588,
      "households": 2850000,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 17,
       "perHouseholdCost": 18,
@@ -92,6 +96,7 @@
      "dailyRate": 484982,
      "households": 390100,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 23,
       "perHouseholdCost": 3,
@@ -110,6 +115,7 @@
      "dailyRate": 2855327,
      "households": 4579000,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 10,
       "perHouseholdCost": 8,
@@ -128,6 +134,7 @@
      "dailyRate": 24455549,
      "households": 41662700,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 1,
       "perHouseholdCost": 7,
@@ -146,6 +153,7 @@
      "dailyRate": 2828144,
      "households": 3146300,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 11,
       "perHouseholdCost": 4,
@@ -164,6 +172,7 @@
      "dailyRate": 341521,
      "households": 742000,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 24,
       "perHouseholdCost": 13,
@@ -182,6 +191,7 @@
      "dailyRate": 7762149,
      "households": 19736500,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 7,
       "perHouseholdCost": 24,
@@ -200,6 +210,7 @@
      "dailyRate": 2883381,
      "households": 2978800,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 9,
       "perHouseholdCost": 2,
@@ -218,6 +229,7 @@
      "dailyRate": 18211849,
      "households": 32382000,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 2,
       "perHouseholdCost": 10,
@@ -236,6 +248,7 @@
      "dailyRate": 3213113,
      "households": 4055400,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 8,
       "perHouseholdCost": 6,
@@ -254,6 +267,7 @@
      "dailyRate": 596333,
      "households": 1466500,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 20,
       "perHouseholdCost": 16,
@@ -272,6 +286,7 @@
      "dailyRate": 1268967,
      "households": 4008300,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 15,
       "perHouseholdCost": 22,
@@ -290,6 +305,7 @@
      "dailyRate": 574907,
      "households": 2328300,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 26,
       "perHouseholdCost": 26,
@@ -308,6 +324,7 @@
      "dailyRate": 12877095,
      "households": 26443900,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 3,
       "perHouseholdCost": 15,
@@ -326,6 +343,7 @@
      "dailyRate": 520355,
      "households": 1760200,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 21,
       "perHouseholdCost": 21,
@@ -344,6 +362,7 @@
      "dailyRate": 485506,
      "households": 288200,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 19,
       "perHouseholdCost": 1,
@@ -362,6 +381,7 @@
      "dailyRate": 229251,
      "households": 888000,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 25,
       "perHouseholdCost": 19,
@@ -380,6 +400,7 @@
      "dailyRate": 0,
      "households": 242800,
      "administeredPrice": true,
+     "administeredSince": "2020-06-15",
      "rank": {
       "totalExtraCost": 27,
       "perHouseholdCost": 27,
@@ -398,6 +419,7 @@
      "dailyRate": 5024635,
      "households": 8658800,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 4,
       "perHouseholdCost": 9,
@@ -416,6 +438,7 @@
      "dailyRate": 2190802,
      "households": 15521300,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 5,
       "perHouseholdCost": 20,
@@ -434,6 +457,7 @@
      "dailyRate": 1575715,
      "households": 4562100,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 13,
       "perHouseholdCost": 17,
@@ -452,6 +476,7 @@
      "dailyRate": 1510981,
      "households": 7594400,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 14,
       "perHouseholdCost": 25,
@@ -470,6 +495,7 @@
      "dailyRate": 848167,
      "households": 4837300,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 16,
       "perHouseholdCost": 23,
@@ -488,6 +514,7 @@
      "dailyRate": 486892,
      "households": 868900,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 22,
       "perHouseholdCost": 12,
@@ -506,6 +533,7 @@
      "dailyRate": 842447,
      "households": 1726600,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 18,
       "perHouseholdCost": 14,
@@ -526,7 +554,8 @@
     "perHouseholdCost": 68.38,
     "dailyRate": 100343118,
     "households": 203172200,
-    "administeredPrice": false
+    "administeredPrice": false,
+    "administeredSince": null
    },
    "countries": {
     "AT": {
@@ -541,6 +570,7 @@
      "dailyRate": 1847018,
      "households": 4210500,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 11,
       "perHouseholdCost": 10,
@@ -559,6 +589,7 @@
      "dailyRate": 3976031,
      "households": 5243300,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 6,
       "perHouseholdCost": 5,
@@ -577,6 +608,7 @@
      "dailyRate": 867425,
      "households": 2850000,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 17,
       "perHouseholdCost": 21,
@@ -595,6 +627,7 @@
      "dailyRate": 484716,
      "households": 390100,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 23,
       "perHouseholdCost": 2,
@@ -613,6 +646,7 @@
      "dailyRate": 2873363,
      "households": 4579000,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 10,
       "perHouseholdCost": 8,
@@ -631,6 +665,7 @@
      "dailyRate": 25587659,
      "households": 41662700,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 1,
       "perHouseholdCost": 7,
@@ -649,6 +684,7 @@
      "dailyRate": 2922947,
      "households": 3146300,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 9,
       "perHouseholdCost": 3,
@@ -667,6 +703,7 @@
      "dailyRate": 345025,
      "households": 742000,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 24,
       "perHouseholdCost": 13,
@@ -685,6 +722,7 @@
      "dailyRate": 7989607,
      "households": 19736500,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 7,
       "perHouseholdCost": 24,
@@ -703,6 +741,7 @@
      "dailyRate": 2391961,
      "households": 2978800,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 12,
       "perHouseholdCost": 6,
@@ -721,6 +760,7 @@
      "dailyRate": 17481808,
      "households": 32382000,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 2,
       "perHouseholdCost": 11,
@@ -739,6 +779,7 @@
      "dailyRate": 3264254,
      "households": 4055400,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 8,
       "perHouseholdCost": 4,
@@ -757,6 +798,7 @@
      "dailyRate": 614939,
      "households": 1466500,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 20,
       "perHouseholdCost": 16,
@@ -775,6 +817,7 @@
      "dailyRate": 1214254,
      "households": 4008300,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 16,
       "perHouseholdCost": 23,
@@ -793,6 +836,7 @@
      "dailyRate": 578202,
      "households": 2328300,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 26,
       "perHouseholdCost": 26,
@@ -811,6 +855,7 @@
      "dailyRate": 13132664,
      "households": 26443900,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 3,
       "perHouseholdCost": 14,
@@ -829,6 +874,7 @@
      "dailyRate": 534415,
      "households": 1760200,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 21,
       "perHouseholdCost": 19,
@@ -847,6 +893,7 @@
      "dailyRate": 494344,
      "households": 288200,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 19,
       "perHouseholdCost": 1,
@@ -865,6 +912,7 @@
      "dailyRate": 233720,
      "households": 888000,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 25,
       "perHouseholdCost": 20,
@@ -883,6 +931,7 @@
      "dailyRate": 0,
      "households": 242800,
      "administeredPrice": true,
+     "administeredSince": "2020-06-15",
      "rank": {
       "totalExtraCost": 27,
       "perHouseholdCost": 27,
@@ -901,6 +950,7 @@
      "dailyRate": 5395496,
      "households": 8658800,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 4,
       "perHouseholdCost": 9,
@@ -919,6 +969,7 @@
      "dailyRate": 2575082,
      "households": 15521300,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 5,
       "perHouseholdCost": 18,
@@ -937,6 +988,7 @@
      "dailyRate": 1616240,
      "households": 4562100,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 13,
       "perHouseholdCost": 17,
@@ -955,6 +1007,7 @@
      "dailyRate": 1574504,
      "households": 7594400,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 14,
       "perHouseholdCost": 25,
@@ -973,6 +1026,7 @@
      "dailyRate": 1000713,
      "households": 4837300,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 15,
       "perHouseholdCost": 22,
@@ -991,6 +1045,7 @@
      "dailyRate": 503629,
      "households": 868900,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 22,
       "perHouseholdCost": 12,
@@ -1009,6 +1064,7 @@
      "dailyRate": 843104,
      "households": 1726600,
      "administeredPrice": false,
+     "administeredSince": null,
      "rank": {
       "totalExtraCost": 18,
       "perHouseholdCost": 15,

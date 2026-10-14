@@ -16,6 +16,7 @@ export interface Entry {
   dailyRate: number;
   households: number;
   administeredPrice?: boolean;
+  administeredSince?: string | null;
   rank?: Record<string, number>;
 }
 

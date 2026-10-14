@@ -145,3 +145,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* The one filled block in the system: amber takeaway box. */
 .takeaway { background: var(--pe-amber-tint); border-left: 3px solid var(--pe-amber); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: var(--space-6) var(--space-8); color: var(--pe-ink-soft); margin: var(--space-6) 0; max-width: 680px; }
+
+/* Footnotes in the country table (fixed-price countries). */
+.fn { color: var(--pe-clay); font-weight: var(--weight-bold); margin-left: 2px; }
+.table-note { font-size: var(--text-xs); color: var(--text-secondary); margin-top: var(--space-4); line-height: var(--leading-body); }

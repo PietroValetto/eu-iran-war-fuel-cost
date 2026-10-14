@@ -64,6 +64,14 @@ def main(cached: bool = False) -> None:
             year_before = [p for d, p in wob["with_tax"][area][fuel].items() if last_prewar - dt.timedelta(days=364) <= d <= last_prewar]
             administered = area != "EU" and max(year_before) - min(year_before) < 0.005
             season_used = {} if administered else season
+            fixed_since = None
+            if administered:
+                hist = sorted(wob["with_tax"][area][fuel].items())
+                fixed_since = hist[-1][0]
+                for d, p in reversed(hist):
+                    if abs(p - hist[-1][1]) > 0.0005:
+                        break
+                    fixed_since = d
 
             def litres(d, m=month_lpd):
                 return m[f"{d.month:02d}"]
@@ -85,6 +93,7 @@ def main(cached: bool = False) -> None:
                     "totalExtraCost": round(b), "perHouseholdCost": round(b / hh_n, 2),
                     "dailyRate": round((actual_daily[end] - cf_daily[s][end]) * litres(end)),
                     "households": hh_n, "administeredPrice": administered,
+                    "administeredSince": fixed_since.isoformat() if fixed_since else None,
                 }
                 if area == "EU":
                     deficit[s]["euDirect"] = entry

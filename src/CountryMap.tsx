@@ -5,7 +5,7 @@ import { feature } from "topojson-client";
 import type { Feature, FeatureCollection, Geometry } from "geojson";
 import type { Topology } from "topojson-specification";
 import { AllData, FUEL_LABEL, Fuel, Scenario } from "./data";
-import { euro, euro2, euroShort, perLitre, signed } from "./format";
+import { euro, euro2, euroShort, monthYear, perLitre, signed } from "./format";
 
 export type Metric = "currentPrice" | "priceIncrease" | "totalExtraCost" | "perHouseholdCost";
 const METRICS: { key: Metric; label: string; fmt: (v: number) => string; short: (v: number) => string }[] = [
@@ -56,6 +56,7 @@ export function CountryMap({ data, fuel, scenario, onSelect }: Props) {
   const hovered = hover && countries[hover] ? hover : null;
   const name = (c: string) => data.households.areas[c]?.name ?? c;
   const euAvg = data.fuels[fuel].current.euAvg;
+  const fixed = Object.entries(countries).filter(([, e]) => e.administeredPrice);
 
   return (
     <section className="section" id="countries">
@@ -89,7 +90,8 @@ export function CountryMap({ data, fuel, scenario, onSelect }: Props) {
             })}
           </svg>
           <div className="map-readout" aria-live="polite">
-            {hovered ? (<><strong>{name(hovered)}</strong> <span data-tabular>{m.fmt(countries[hovered][metric])}</span></>) : <span className="muted">Hover a country</span>}
+            {hovered ? (<><strong>{name(hovered)}</strong> <span data-tabular>{m.fmt(countries[hovered][metric])}</span>
+              {countries[hovered].administeredPrice && <span className="muted"> · fixed price</span>}</>) : <span className="muted">Hover a country</span>}
           </div>
           <div className="scale">
             <span data-tabular>{m.short(lo)}</span>
@@ -115,12 +117,22 @@ export function CountryMap({ data, fuel, scenario, onSelect }: Props) {
               {ranked.map(([c, e], i) => (
                 <tr key={c} className={hovered === c ? "is-hover" : ""} onMouseEnter={() => setHover(c)} onMouseLeave={() => setHover(null)}>
                   <td className="muted" data-tabular>{i + 1}</td>
-                  <td><button className="link" onClick={() => onSelect(c)}>{name(c)}</button></td>
+                  <td>
+                    <button className="link" onClick={() => onSelect(c)}>{name(c)}</button>
+                    {e.administeredPrice && <sup className="fn" aria-label="fixed price, see note">*</sup>}
+                  </td>
                   <td className="num" data-tabular>{m.fmt(e[metric])}</td>
                 </tr>
               ))}
             </tbody>
           </table>
+          {fixed.length > 0 && (
+            <p className="table-note">
+              <sup className="fn">*</sup> {fixed.map(([c]) => name(c)).join(", ")}: pump prices are fixed by the state (unchanged
+              since {monthYear(fixed[0][1].administeredSince ?? "2020-06-15")}), so consumers pay nothing extra. The war's cost falls
+              on public finances instead, and isn't counted in this tracker.
+            </p>
+          )}
         </div>
       </div>
     </section>

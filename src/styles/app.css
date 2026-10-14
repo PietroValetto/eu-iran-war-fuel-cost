@@ -174,3 +174,6 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .vs-mid { display: none; }
   .vs-table { font-size: var(--text-sm); }
 }
+/* Footnotes in the country table (fixed-price countries). */
+.fn { color: var(--pe-clay); font-weight: var(--weight-bold); margin-left: 2px; }
+.table-note { font-size: var(--text-xs); color: var(--text-secondary); margin-top: var(--space-4); line-height: var(--leading-body); }

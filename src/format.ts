@@ -21,6 +21,9 @@ export const pct = (v: number) => `${v >= 0 ? "+" : "−"}${Math.abs(v).toFixed(
 export function longDate(iso: string): string {
   return new Date(iso + "T12:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 }
+export function monthYear(iso: string): string {
+  return new Date(iso + "T12:00:00Z").toLocaleDateString("en-GB", { month: "long", year: "numeric", timeZone: "UTC" });
+}
 export function shortDate(iso: string): string {
   return new Date(iso + "T12:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
 }

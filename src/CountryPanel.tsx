@@ -3,7 +3,7 @@ import { useModal } from "./useModal";
 import { AllData, FUELS, FUEL_LABEL, FUEL_SUB, Fuel, Scenario, entry } from "./data";
 import { useLive } from "./Headline";
 import { ChartLegend, PriceChart } from "./PriceChart";
-import { euro, euro2, euroShort, longDate, pct, perLitre, signed } from "./format";
+import { euro, euro2, euroShort, longDate, monthYear, pct, perLitre, signed } from "./format";
 
 interface Props {
   data: AllData;
@@ -43,8 +43,11 @@ export function CountryPanel({ data, code, fuel, scenario, onFuel, onClose }: Pr
 
         {e("petrol").administeredPrice && (
           <p className="takeaway">
-            {area.name} fixes pump prices by law, so they did not move after the war began. Consumers pay no extra at the pump.
-            The cost falls on the state, which covers the gap between fixed and market prices.
+            <strong>Why {euro(0)}?</strong> {area.name}'s pump prices are set by the state. Petrol has been {perLitre(e("petrol").currentPrice)} and
+            diesel {perLitre(e("diesel").currentPrice)} a litre in every EU Oil Bulletin since {monthYear(e("petrol").administeredSince ?? d.endDate)}, including
+            the 2022 energy crisis and this war. Drivers pay nothing extra at the pump. The war's cost hasn't disappeared, though: it falls
+            on the state, which covers the gap between the fixed price and the market price. This tracker measures only what consumers
+            pay at the pump, so that public cost isn't counted here.
           </p>
         )}
 

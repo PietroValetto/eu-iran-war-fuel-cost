@@ -7,12 +7,13 @@ import type { Topology } from "topojson-specification";
 import { AllData, FUEL_LABEL, Fuel, Scenario } from "./data";
 import { euro, euro2, euroShort, monthYear, perLitre, signed } from "./format";
 
-export type Metric = "currentPrice" | "priceIncrease" | "totalExtraCost" | "perHouseholdCost";
+export type Metric = "currentPrice" | "priceIncrease" | "totalExtraCost" | "perHouseholdCost" | "taxRelief";
 const METRICS: { key: Metric; label: string; fmt: (v: number) => string; short: (v: number) => string }[] = [
   { key: "currentPrice", label: "Current price", fmt: perLitre, short: perLitre },
   { key: "priceIncrease", label: "Price change", fmt: (v) => `${signed(v)} /L`, short: (v) => signed(v, 2) },
   { key: "totalExtraCost", label: "Total consumer cost", fmt: euro, short: euroShort },
   { key: "perHouseholdCost", label: "Household cost", fmt: euro2, short: (v) => euro(v) },
+  { key: "taxRelief", label: "Tax cuts", fmt: euro, short: euroShort },
 ];
 
 // Mainland-Europe frame: clips the French outermost regions and other far-flung territories.

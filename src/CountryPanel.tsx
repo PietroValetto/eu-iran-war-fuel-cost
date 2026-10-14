@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useModal } from "./useModal";
+import { taxMeasures } from "./TaxSplit";
 import { AllData, FUELS, FUEL_LABEL, FUEL_SUB, Fuel, Scenario, entry } from "./data";
 import { useLive } from "./Headline";
 import { ChartLegend, PriceChart } from "./PriceChart";
@@ -88,6 +89,24 @@ export function CountryPanel({ data, code, fuel, scenario, onFuel, onClose }: Pr
             <span className="stat-note">litres/day this month</span>
           </div>
         </div>
+
+        {(() => {
+          const relief = FUELS.reduce((t, f) => t + e(f).taxRelief + e(f).stateCostFixedPrice, 0);
+          const windfall = FUELS.reduce((t, f) => t + e(f).vatWindfall, 0);
+          const measures = taxMeasures(data, scenario, code);
+          return (
+            <div className="panel-tax">
+              <h3 className="chart-title">Tax measures</h3>
+              <p className="stat-note" data-tabular>
+                {relief > 1e5
+                  ? <>Tax cuts absorbed <strong>{euroShort(relief)}</strong> of the shock{e("petrol").administeredPrice ? " (estimated cost of keeping prices fixed)" : ""}. </>
+                  : <>No fuel-tax cuts since the war began. </>}
+                {windfall > 1e5 && <>The government collected about <strong>{euroShort(windfall)}</strong> in extra VAT on higher prices.</>}
+              </p>
+              {measures.length > 0 && <ul className="measures-list">{measures.map((m) => <li key={m}>{m}</li>)}</ul>}
+            </div>
+          );
+        })()}
 
         <h3 className="chart-title">{FUEL_LABEL[fuel]} price history · {area.name}</h3>
         <PriceChart data={data} fuel={fuel} scenario={scenario} area={code} height={260} />

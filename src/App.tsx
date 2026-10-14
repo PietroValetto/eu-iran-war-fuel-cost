@@ -7,6 +7,7 @@ import { Headline } from "./Headline";
 import { Methodology } from "./Methodology";
 import { longDate } from "./format";
 import { UsComparison } from "./UsComparison";
+import { TaxSplit } from "./TaxSplit";
 
 const REPO_URL = "https://github.com/PietroValetto/eu-iran-war-fuel-cost";
 
@@ -94,6 +95,7 @@ export default function App() {
         <>
           <Headline data={data} scenario={scenario} fuel={fuel} onFuel={(f) => { setFuel(f); document.getElementById("breakdown")?.scrollIntoView({ behavior: "smooth" }); }} />
           <FuelBreakdown data={data} fuel={fuel} scenario={scenario} />
+          <TaxSplit data={data} scenario={scenario} onSelect={openCountry} />
           <CountryMap data={data} fuel={fuel} scenario={scenario} onSelect={openCountry} />
         </>
       )}

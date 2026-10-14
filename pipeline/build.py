@@ -12,6 +12,7 @@ import us_comparison
 from burden import burden
 from common import EU27, FUELS, NAMES, SEASONAL_YEARS, WAR_START, interpolate_daily, write_json
 from counterfactual import seasonal_weekly_change, weekly_path
+from tax_split import implied_pretax_cf, split as tax_split
 
 SERIES_START = dt.date(2026, 1, 5)
 SCENARIOS = ("lastBulletin", "febAvg")
@@ -47,7 +48,9 @@ def main(cached: bool = False) -> None:
         eu_weights = {c: wob["consumption"][weights_year].get(c, {}).get(fuel, 0.0) for c in EU27}
         wsum = sum(eu_weights.values())
 
-        for area in EU27 + ["EU"]:
+        eu_pretax_shock = {}
+        # The EU aggregate goes first: its pre-tax shock is needed to estimate fixed-price countries' state cost.
+        for area in ["EU"] + EU27:
             retail = {d: p for d, p in wob["with_tax"][area][fuel].items() if d >= SERIES_START}
             pretax = {d: p for d, p in wob["wo_tax"][area][fuel].items() if d >= SERIES_START}
             if area == "EU":
@@ -55,6 +58,7 @@ def main(cached: bool = False) -> None:
             else:
                 vat0 = fetch_wob.vat_at(wob["vat"], area, fuel, last_prewar)
             actual_daily = interpolate_daily(retail, SERIES_START, end)
+            pretax_daily = interpolate_daily(pretax, SERIES_START, end)
             ts_series[area] = [{"date": d.isoformat(), "price": r(p)} for d, p in actual_daily.items()]
 
             anchors = {
@@ -87,6 +91,12 @@ def main(cached: bool = False) -> None:
                     totals[s] += b
                     latest_rate[s] += (actual_daily[end] - cf_daily[s][end]) * litres(end)
                 hh_n = hh[area]["households"]
+                if area == "EU" and s == "lastBulletin":
+                    eu_pretax_shock = {d: pretax_daily[d] - implied_pretax_cf(cf_daily[s][d], a_retail, a_pretax, vat0)
+                                       for d in cf_daily[s]}
+                split = tax_split(actual_daily, pretax_daily, cf_daily[s], a_retail, a_pretax, vat0,
+                                  lambda d, a=area: (vat0 if a == "EU" else fetch_wob.vat_at(wob["vat"], a, fuel, d)),
+                                  litres, WAR_START, end, administered, eu_pretax_shock)
                 entry = {
                     "warStartPrice": r(a_retail), "currentPrice": r(retail[end]),
                     "priceIncrease": r(retail[end] - a_retail), "pctChange": r((retail[end] / a_retail - 1) * 100, 2),
@@ -96,7 +106,15 @@ def main(cached: bool = False) -> None:
                     "dailyRate": round((actual_daily[end] - cf_daily[s][end]) * litres(end)),
                     "households": hh_n, "administeredPrice": administered,
                     "administeredSince": fixed_since.isoformat() if fixed_since else None,
+                    **split,
+                    "totalShock": round(b + split["taxRelief"] + split["stateCostFixedPrice"]),
                 }
+                if area != "EU":
+                    entry["taxChanges"] = {
+                        "vat": fetch_wob.tax_changes(wob["vat"], area, fuel, WAR_START - dt.timedelta(days=28)),
+                        "excise": fetch_wob.tax_changes(wob["excise"], area, fuel, WAR_START - dt.timedelta(days=28)),
+                        "exciseCurrency": fetch_wob.CURRENCY.get(area, "EUR"),
+                    }
                 if area == "EU":
                     deficit[s]["euDirect"] = entry
                 else:
@@ -116,9 +134,11 @@ def main(cached: bool = False) -> None:
         eu_hh = hh["EU"]["households"]
         for s in SCENARIOS:
             direct = deficit[s]["euDirect"]
+            sums = {k: sum(deficit[s]["countries"][c][k] for c in EU27)
+                    for k in ("taxRelief", "vatWindfall", "stateCostFixedPrice", "totalShock")}
             deficit[s]["EU"] = direct | {"totalExtraCost": round(totals[s]), "perHouseholdCost": round(totals[s] / eu_hh, 2),
-                                         "dailyRate": round(latest_rate[s])}
-            for metric in ("totalExtraCost", "perHouseholdCost", "pctChange"):
+                                         "dailyRate": round(latest_rate[s])} | sums
+            for metric in ("totalExtraCost", "perHouseholdCost", "pctChange", "taxRelief"):
                 ranked = sorted(EU27, key=lambda c: deficit[s]["countries"][c][metric], reverse=True)
                 for i, c in enumerate(ranked, 1):
                     deficit[s]["countries"][c].setdefault("rank", {})[metric] = i

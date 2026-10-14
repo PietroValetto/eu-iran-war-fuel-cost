@@ -17,8 +17,16 @@ export interface Entry {
   households: number;
   administeredPrice?: boolean;
   administeredSince?: string | null;
+  taxRelief: number;
+  vatWindfall: number;
+  stateCostFixedPrice: number;
+  totalShock: number;
+  reliefPerLitreNow: number;
+  taxChanges?: { vat: TaxChange[]; excise: TaxChange[]; exciseCurrency: string };
   rank?: Record<string, number>;
 }
+
+export interface TaxChange { date: string; from: number; to: number }
 
 export interface Deficit {
   warStartDate: string;

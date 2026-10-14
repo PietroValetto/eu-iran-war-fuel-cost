@@ -177,3 +177,22 @@ button { font: inherit; color: inherit; cursor: pointer; }
 /* Footnotes in the country table (fixed-price countries). */
 .fn { color: var(--pe-clay); font-weight: var(--weight-bold); margin-left: 2px; }
 .table-note { font-size: var(--text-xs); color: var(--text-secondary); margin-top: var(--space-4); line-height: var(--leading-body); }
+
+/* --- Who carries the shock --------------------------------------------- */
+.split-bar { display: flex; gap: 3px; margin: var(--space-10) 0 var(--space-4); min-height: 64px; border-radius: var(--radius-md); overflow: hidden; }
+.split-seg { display: flex; flex-direction: column; justify-content: center; padding: var(--space-4) var(--space-6); font-size: var(--text-sm); flex-basis: 0; min-width: 0; overflow: hidden; }
+.split-seg b { font-family: var(--font-display); font-weight: var(--weight-black); font-size: var(--text-h3); letter-spacing: var(--track-title); font-feature-settings: var(--figures-tabular); }
+.split-consumers { background: var(--pe-amber); color: var(--text-primary); }
+.split-gov { background: var(--pe-green); color: var(--text-on-brand); min-width: 120px; }
+.split-note { max-width: 720px; color: var(--pe-ink-soft); font-size: var(--text-md); }
+.relief-table { width: 100%; border-collapse: collapse; margin-top: var(--space-4); font-size: var(--text-sm); }
+.relief-table th, .relief-table td { padding: var(--space-3) var(--space-3); border-bottom: 1px solid var(--pe-rule-soft); text-align: left; vertical-align: top; }
+.relief-table th { font-weight: var(--weight-medium); white-space: nowrap; }
+.relief-table td.num { text-align: right; white-space: nowrap; font-weight: var(--weight-semibold); }
+.relief-table .measures { color: var(--text-secondary); }
+.panel-tax { margin: var(--space-6) 0 var(--space-8); }
+.measures-list { margin: var(--space-3) 0 0; padding-left: 1.2em; font-size: var(--text-sm); color: var(--text-secondary); display: grid; gap: 2px; }
+@media (max-width: 480px) {
+  .relief-table .measures { display: none; }
+  .split-seg b { font-size: var(--text-lg); }
+}

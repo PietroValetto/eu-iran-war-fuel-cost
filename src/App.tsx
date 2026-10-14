@@ -9,17 +9,19 @@ import { longDate } from "./format";
 import { UsComparison } from "./UsComparison";
 import { TaxSplit } from "./TaxSplit";
 import { EnergyBill } from "./EnergyBill";
+import { WhatIf } from "./WhatIf";
 
 const REPO_URL = "https://github.com/PietroValetto/eu-iran-war-fuel-cost";
 
 const BROWN_URL = "https://iranwarcost.watson.brown.edu/";
 
 // Tabs and country panels share the URL hash: #fuel, #us, or a country code like #IT.
-export type Tab = "fuel" | "energy" | "us";
+export type Tab = "fuel" | "energy" | "us" | "whatif";
 const TABS: { id: Tab; label: string }[] = [
   { id: "fuel", label: "Fuel" },
   { id: "energy", label: "Energy bill" },
   { id: "us", label: "EU vs US" },
+  { id: "whatif", label: "What if…?" },
 ];
 const readHash = () => window.location.hash.replace("#", "");
 
@@ -37,7 +39,8 @@ export default function App() {
   }, []);
 
   // Optional tabs only show when their data file loaded.
-  const available = (t: Tab) => t === "fuel" || (t === "us" ? Boolean(data?.us) : Boolean(data?.household || data?.heating));
+  const available = (t: Tab) =>
+    t === "fuel" || t === "whatif" || (t === "us" ? Boolean(data?.us) : Boolean(data?.household || data?.heating));
 
   // Tabs and country pages are shareable: /#us opens the US comparison, /#IT opens Italy's breakdown.
   useEffect(() => {
@@ -105,6 +108,7 @@ export default function App() {
       )}
       {tab === "energy" && <EnergyBill data={data} scenario={scenario} onSelect={openCountry} />}
       {tab === "us" && data.us && <UsComparison us={data.us} />}
+      {tab === "whatif" && <WhatIf data={data} scenario={scenario} />}
 
       <footer className="status">
         <p>✓ EU Weekly Oil Bulletin: prices as of {longDate(d.endDate)} · {data.fuels.petrol.ts.bulletinDates.length} weekly bulletins since {longDate(data.fuels.petrol.ts.bulletinDates[0])}</p>
